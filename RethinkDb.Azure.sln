@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2048
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{191524B5-D9A7-4F3F-9A9B-A623C86B6A07}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{9BEBED20-5D0E-48A6-999E-758024BEB7E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6E0B44CF-86F0-4F6C-804C-FE34AC1B0BEF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{0BF43B1E-0B30-42C7-A0EE-E9BBAB47AC77}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RethinkDb.Azure.WebJobs.Extensions", "src\RethinkDb.Azure.WebJobs.Extensions\RethinkDb.Azure.WebJobs.Extensions.csproj", "{066AFA43-18D3-48D5-94D5-69E2271F6B85}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RethinkDb.Azure.WebJobs.Extensions.Tests", "test\RethinkDb.Azure.WebJobs.Extensions.Tests\RethinkDb.Azure.WebJobs.Extensions.Tests.csproj", "{88724276-2647-4014-8AA8-F7B2C52D6210}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.RethinkDb.Azure.Functions", "samples\Demo.RethinkDb.Azure.Functions\Demo.RethinkDb.Azure.Functions.csproj", "{DB602136-B079-406A-A3AF-323F46BE5FEE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocFx.RethinkDb.Azure", "docs\DocFx.RethinkDb.Azure\DocFx.RethinkDb.Azure.csproj", "{2F36753C-9878-4323-91DD-25F1772F4224}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{066AFA43-18D3-48D5-94D5-69E2271F6B85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{066AFA43-18D3-48D5-94D5-69E2271F6B85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{066AFA43-18D3-48D5-94D5-69E2271F6B85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{066AFA43-18D3-48D5-94D5-69E2271F6B85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88724276-2647-4014-8AA8-F7B2C52D6210}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88724276-2647-4014-8AA8-F7B2C52D6210}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88724276-2647-4014-8AA8-F7B2C52D6210}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88724276-2647-4014-8AA8-F7B2C52D6210}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB602136-B079-406A-A3AF-323F46BE5FEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB602136-B079-406A-A3AF-323F46BE5FEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB602136-B079-406A-A3AF-323F46BE5FEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB602136-B079-406A-A3AF-323F46BE5FEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F36753C-9878-4323-91DD-25F1772F4224}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F36753C-9878-4323-91DD-25F1772F4224}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F36753C-9878-4323-91DD-25F1772F4224}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F36753C-9878-4323-91DD-25F1772F4224}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{066AFA43-18D3-48D5-94D5-69E2271F6B85} = {6E0B44CF-86F0-4F6C-804C-FE34AC1B0BEF}
+		{88724276-2647-4014-8AA8-F7B2C52D6210} = {0BF43B1E-0B30-42C7-A0EE-E9BBAB47AC77}
+		{DB602136-B079-406A-A3AF-323F46BE5FEE} = {9BEBED20-5D0E-48A6-999E-758024BEB7E3}
+		{2F36753C-9878-4323-91DD-25F1772F4224} = {191524B5-D9A7-4F3F-9A9B-A623C86B6A07}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F1E6CC11-C8AC-4AD7-9AF7-1045E96D2B12}
+	EndGlobalSection
+EndGlobal

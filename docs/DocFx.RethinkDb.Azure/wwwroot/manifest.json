@@ -1,0 +1,222 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Users/tpecz/Projekty/RethinkDb.Azure/docs/DocFx.RethinkDb.Azure",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.html",
+          "hash": "jK3ApVaAzbBR2sUzMY43mQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Microsoft.Azure.WebJobs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Microsoft.Azure.WebJobs.html",
+          "hash": "s6CycrlxwcSoSn82CliKmg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange.html",
+          "hash": "wUyDsL1/8GJKtwfoCiKi+w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RethinkDb.Azure.WebJobs.Extensions.Model.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RethinkDb.Azure.WebJobs.Extensions.Model.html",
+          "hash": "4ZA4avGQBp4fUDyq97L3Lg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RethinkDb.Azure.WebJobs.Extensions.RethinkDbOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RethinkDb.Azure.WebJobs.Extensions.RethinkDbOptions.html",
+          "hash": "yJRLMLURbkRQkEWCd/13RQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RethinkDb.Azure.WebJobs.Extensions.RethinkDbWebJobsBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RethinkDb.Azure.WebJobs.Extensions.RethinkDbWebJobsBuilderExtensions.html",
+          "hash": "Y8+T4zwxrfjiRGVV3iIQcg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RethinkDb.Azure.WebJobs.Extensions.RethinkDbWebJobsStartup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RethinkDb.Azure.WebJobs.Extensions.RethinkDbWebJobsStartup.html",
+          "hash": "6HTKpB2f8MZyY3Y+1Syt9Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RethinkDb.Azure.WebJobs.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RethinkDb.Azure.WebJobs.Extensions.html",
+          "hash": "D452hayBOUGYAWeo4/s1SQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "7pl9PGaPW9V/KI2/LKRCQA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/azure-functions-bindings-rethinkdb.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/azure-functions-bindings-rethinkdb.html",
+          "hash": "vq4i6NRfeHc6VqfOyJ3mAQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "9rs6F1XOnB2ct6Fx5lDNQQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/ico/favicon.ico",
+      "output": {
+        "resource": {
+          "relative_path": "resources/ico/favicon.ico"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/svg/logo.svg",
+      "output": {
+        "resource": {
+          "relative_path": "resources/svg/logo.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Toc",
+      "source_relative_path": "toc.md",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "9Z29ESXFxSQibmWTvHp3Ew=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Disable incremental build by force rebuild option.",
+        "incrementalPhase": "build"
+      },
+      "processors": {
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build"
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build"
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
+        "incrementalPhase": "postProcessing"
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: RethinkDb.Azure.WebJobs.Extensions
+  commentId: N:RethinkDb.Azure.WebJobs.Extensions
+  id: RethinkDb.Azure.WebJobs.Extensions
+  children:
+  - RethinkDb.Azure.WebJobs.Extensions.RethinkDbOptions
+  - RethinkDb.Azure.WebJobs.Extensions.RethinkDbWebJobsBuilderExtensions
+  - RethinkDb.Azure.WebJobs.Extensions.RethinkDbWebJobsStartup
+  langs:
+  - csharp
+  - vb
+  name: RethinkDb.Azure.WebJobs.Extensions
+  nameWithType: RethinkDb.Azure.WebJobs.Extensions
+  fullName: RethinkDb.Azure.WebJobs.Extensions
+  type: Namespace
+  assemblies:
+  - RethinkDb.Azure.WebJobs.Extensions
+references:
+- uid: RethinkDb.Azure.WebJobs.Extensions.RethinkDbOptions
+  commentId: T:RethinkDb.Azure.WebJobs.Extensions.RethinkDbOptions
+  name: RethinkDbOptions
+  nameWithType: RethinkDbOptions
+  fullName: RethinkDb.Azure.WebJobs.Extensions.RethinkDbOptions
+- uid: RethinkDb.Azure.WebJobs.Extensions.RethinkDbWebJobsBuilderExtensions
+  commentId: T:RethinkDb.Azure.WebJobs.Extensions.RethinkDbWebJobsBuilderExtensions
+  name: RethinkDbWebJobsBuilderExtensions
+  nameWithType: RethinkDbWebJobsBuilderExtensions
+  fullName: RethinkDb.Azure.WebJobs.Extensions.RethinkDbWebJobsBuilderExtensions
+- uid: RethinkDb.Azure.WebJobs.Extensions.RethinkDbWebJobsStartup
+  commentId: T:RethinkDb.Azure.WebJobs.Extensions.RethinkDbWebJobsStartup
+  name: RethinkDbWebJobsStartup
+  nameWithType: RethinkDbWebJobsStartup
+  fullName: RethinkDb.Azure.WebJobs.Extensions.RethinkDbWebJobsStartup

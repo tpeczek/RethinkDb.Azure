@@ -1,0 +1,454 @@
+### YamlMime:ManagedReference
+items:
+- uid: RethinkDb.Azure.WebJobs.Extensions.RethinkDbWebJobsStartup
+  commentId: T:RethinkDb.Azure.WebJobs.Extensions.RethinkDbWebJobsStartup
+  id: RethinkDbWebJobsStartup
+  parent: RethinkDb.Azure.WebJobs.Extensions
+  children:
+  - RethinkDb.Azure.WebJobs.Extensions.RethinkDbWebJobsStartup.Configure(Microsoft.Azure.WebJobs.IWebJobsBuilder)
+  langs:
+  - csharp
+  - vb
+  name: RethinkDbWebJobsStartup
+  nameWithType: RethinkDbWebJobsStartup
+  fullName: RethinkDb.Azure.WebJobs.Extensions.RethinkDbWebJobsStartup
+  type: Class
+  source:
+    remote:
+      path: C:/Users/tpecz/Projekty/RethinkDb.Azure/src/RethinkDb.Azure.WebJobs.Extensions/RethinkDbWebJobsStartup.cs
+    id: RethinkDbWebJobsStartup
+    path: ../../src/RethinkDb.Azure.WebJobs.Extensions/RethinkDbWebJobsStartup.cs
+    startLine: 11
+  assemblies:
+  - RethinkDb.Azure.WebJobs.Extensions
+  namespace: RethinkDb.Azure.WebJobs.Extensions
+  summary: "\nClass defining a startup configuration action for RethinkDB binding extensions, which will be performed as part of host startup.\n"
+  example: []
+  syntax:
+    content: 'public class RethinkDbWebJobsStartup : IWebJobsStartup'
+    content.vb: >-
+      Public Class RethinkDbWebJobsStartup
+          Implements IWebJobsStartup
+  inheritance:
+  - System.Object
+  implements:
+  - Microsoft.Azure.WebJobs.Hosting.IWebJobsStartup
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: RethinkDb.Azure.WebJobs.Extensions.RethinkDbWebJobsStartup.Configure(Microsoft.Azure.WebJobs.IWebJobsBuilder)
+  commentId: M:RethinkDb.Azure.WebJobs.Extensions.RethinkDbWebJobsStartup.Configure(Microsoft.Azure.WebJobs.IWebJobsBuilder)
+  id: Configure(Microsoft.Azure.WebJobs.IWebJobsBuilder)
+  parent: RethinkDb.Azure.WebJobs.Extensions.RethinkDbWebJobsStartup
+  langs:
+  - csharp
+  - vb
+  name: Configure(IWebJobsBuilder)
+  nameWithType: RethinkDbWebJobsStartup.Configure(IWebJobsBuilder)
+  fullName: RethinkDb.Azure.WebJobs.Extensions.RethinkDbWebJobsStartup.Configure(Microsoft.Azure.WebJobs.IWebJobsBuilder)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/tpecz/Projekty/RethinkDb.Azure/src/RethinkDb.Azure.WebJobs.Extensions/RethinkDbWebJobsStartup.cs
+    id: Configure
+    path: ../../src/RethinkDb.Azure.WebJobs.Extensions/RethinkDbWebJobsStartup.cs
+    startLine: 17
+  assemblies:
+  - RethinkDb.Azure.WebJobs.Extensions
+  namespace: RethinkDb.Azure.WebJobs.Extensions
+  summary: "\nPerforms the startup configuration action for RethinkDB binding extensions.\n"
+  example: []
+  syntax:
+    content: public void Configure(IWebJobsBuilder builder)
+    parameters:
+    - id: builder
+      type: Microsoft.Azure.WebJobs.IWebJobsBuilder
+      description: The <xref href="Microsoft.Azure.WebJobs.IWebJobsBuilder" data-throw-if-not-resolved="false"></xref> that can be used to configure the host.
+    content.vb: Public Sub Configure(builder As IWebJobsBuilder)
+  overload: RethinkDb.Azure.WebJobs.Extensions.RethinkDbWebJobsStartup.Configure*
+  implements:
+  - Microsoft.Azure.WebJobs.Hosting.IWebJobsStartup.Configure(Microsoft.Azure.WebJobs.IWebJobsBuilder)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: RethinkDb.Azure.WebJobs.Extensions
+  commentId: N:RethinkDb.Azure.WebJobs.Extensions
+  name: RethinkDb.Azure.WebJobs.Extensions
+  nameWithType: RethinkDb.Azure.WebJobs.Extensions
+  fullName: RethinkDb.Azure.WebJobs.Extensions
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Microsoft.Azure.WebJobs.Hosting.IWebJobsStartup
+  commentId: T:Microsoft.Azure.WebJobs.Hosting.IWebJobsStartup
+  parent: Microsoft.Azure.WebJobs.Hosting
+  isExternal: true
+  name: IWebJobsStartup
+  nameWithType: IWebJobsStartup
+  fullName: Microsoft.Azure.WebJobs.Hosting.IWebJobsStartup
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.Azure.WebJobs.Hosting
+  commentId: N:Microsoft.Azure.WebJobs.Hosting
+  isExternal: true
+  name: Microsoft.Azure.WebJobs.Hosting
+  nameWithType: Microsoft.Azure.WebJobs.Hosting
+  fullName: Microsoft.Azure.WebJobs.Hosting
+- uid: Microsoft.Azure.WebJobs.IWebJobsBuilder
+  commentId: T:Microsoft.Azure.WebJobs.IWebJobsBuilder
+  parent: Microsoft.Azure.WebJobs
+  isExternal: true
+  name: IWebJobsBuilder
+  nameWithType: IWebJobsBuilder
+  fullName: Microsoft.Azure.WebJobs.IWebJobsBuilder
+- uid: RethinkDb.Azure.WebJobs.Extensions.RethinkDbWebJobsStartup.Configure*
+  commentId: Overload:RethinkDb.Azure.WebJobs.Extensions.RethinkDbWebJobsStartup.Configure
+  name: Configure
+  nameWithType: RethinkDbWebJobsStartup.Configure
+  fullName: RethinkDb.Azure.WebJobs.Extensions.RethinkDbWebJobsStartup.Configure
+- uid: Microsoft.Azure.WebJobs.Hosting.IWebJobsStartup.Configure(Microsoft.Azure.WebJobs.IWebJobsBuilder)
+  commentId: M:Microsoft.Azure.WebJobs.Hosting.IWebJobsStartup.Configure(Microsoft.Azure.WebJobs.IWebJobsBuilder)
+  parent: Microsoft.Azure.WebJobs.Hosting.IWebJobsStartup
+  isExternal: true
+  name: Configure(IWebJobsBuilder)
+  nameWithType: IWebJobsStartup.Configure(IWebJobsBuilder)
+  fullName: Microsoft.Azure.WebJobs.Hosting.IWebJobsStartup.Configure(Microsoft.Azure.WebJobs.IWebJobsBuilder)
+  spec.csharp:
+  - uid: Microsoft.Azure.WebJobs.Hosting.IWebJobsStartup.Configure(Microsoft.Azure.WebJobs.IWebJobsBuilder)
+    name: Configure
+    nameWithType: IWebJobsStartup.Configure
+    fullName: Microsoft.Azure.WebJobs.Hosting.IWebJobsStartup.Configure
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Microsoft.Azure.WebJobs.IWebJobsBuilder
+    name: IWebJobsBuilder
+    nameWithType: IWebJobsBuilder
+    fullName: Microsoft.Azure.WebJobs.IWebJobsBuilder
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Microsoft.Azure.WebJobs.Hosting.IWebJobsStartup.Configure(Microsoft.Azure.WebJobs.IWebJobsBuilder)
+    name: Configure
+    nameWithType: IWebJobsStartup.Configure
+    fullName: Microsoft.Azure.WebJobs.Hosting.IWebJobsStartup.Configure
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Microsoft.Azure.WebJobs.IWebJobsBuilder
+    name: IWebJobsBuilder
+    nameWithType: IWebJobsBuilder
+    fullName: Microsoft.Azure.WebJobs.IWebJobsBuilder
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.Azure.WebJobs
+  commentId: N:Microsoft.Azure.WebJobs
+  name: Microsoft.Azure.WebJobs
+  nameWithType: Microsoft.Azure.WebJobs
+  fullName: Microsoft.Azure.WebJobs

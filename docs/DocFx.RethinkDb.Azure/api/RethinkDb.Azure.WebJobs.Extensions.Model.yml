@@ -1,0 +1,22 @@
+### YamlMime:ManagedReference
+items:
+- uid: RethinkDb.Azure.WebJobs.Extensions.Model
+  commentId: N:RethinkDb.Azure.WebJobs.Extensions.Model
+  id: RethinkDb.Azure.WebJobs.Extensions.Model
+  children:
+  - RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange
+  langs:
+  - csharp
+  - vb
+  name: RethinkDb.Azure.WebJobs.Extensions.Model
+  nameWithType: RethinkDb.Azure.WebJobs.Extensions.Model
+  fullName: RethinkDb.Azure.WebJobs.Extensions.Model
+  type: Namespace
+  assemblies:
+  - RethinkDb.Azure.WebJobs.Extensions
+references:
+- uid: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange
+  commentId: T:RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange
+  name: DocumentChange
+  nameWithType: DocumentChange
+  fullName: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange
