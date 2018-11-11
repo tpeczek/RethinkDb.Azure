@@ -32,6 +32,11 @@ bld/
 # Visual Studio 2017 auto generated files
 Generated\ Files/
 
+# DocFX generated stuff
+docs/DocFx.RethinkDb.Azure/log.txt
+docs/DocFx.RethinkDb.Azure/api/
+docs/DocFx.RethinkDb.Azure/wwwroot/
+
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
