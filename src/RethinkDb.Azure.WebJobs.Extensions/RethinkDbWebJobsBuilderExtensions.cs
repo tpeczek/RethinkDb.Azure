@@ -3,6 +3,7 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RethinkDb.Azure.WebJobs.Extensions.Config;
+using RethinkDb.Azure.WebJobs.Extensions.Services;
 
 namespace RethinkDb.Azure.WebJobs.Extensions
 {
@@ -50,6 +51,8 @@ namespace RethinkDb.Azure.WebJobs.Extensions
                 {
                     config.GetSection(path).Bind(options);
                 });
+
+            builder.Services.AddSingleton<IRethinkDBConnectionFactory, RethinkDBConnectionFactory>();
 
             return builder;
         }

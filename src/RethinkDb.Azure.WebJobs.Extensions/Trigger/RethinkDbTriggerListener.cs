@@ -3,6 +3,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs.Host.Executors;
 using Microsoft.Azure.WebJobs.Host.Listeners;
+using RethinkDb.Driver.Ast;
+using RethinkDb.Driver.Net;
 using RethinkDb.Azure.WebJobs.Extensions.Model;
 
 namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
@@ -15,22 +17,20 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
         private const int LISTENER_REGISTERED = 2;
 
         private readonly ITriggeredFunctionExecutor _executor;
-        private readonly Driver.Net.Connection _rethinkDbConnection;
-        private readonly Driver.Ast.Table _rethinkDbTable;
+        private readonly Task<Connection> _rethinkDbConnectionTask;
+        private readonly Table _rethinkDbTable;
         private readonly bool _includeTypes;
 
         private int _listenerStatus = LISTENER_NOT_REGISTERED;
         private Task _listenerTask;
         private CancellationTokenSource _listenerStoppingTokenSource;
-
-        private bool _disposed = false;
         #endregion
 
         #region Constructor
-        public RethinkDbTriggerListener(ITriggeredFunctionExecutor executor, Driver.Net.Connection rethinkDbConnection, Driver.Ast.Table rethinkDbTable, bool includeTypes)
+        public RethinkDbTriggerListener(ITriggeredFunctionExecutor executor, Task<Connection> rethinkDbConnectionTask, Table rethinkDbTable, bool includeTypes)
         {
             _executor = executor;
-            _rethinkDbConnection = rethinkDbConnection;
+            _rethinkDbConnectionTask = rethinkDbConnectionTask;
             _rethinkDbTable = rethinkDbTable;
             _includeTypes = includeTypes;
         }
@@ -84,16 +84,7 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
         }
 
         public void Dispose()
-        {
-            if (!_disposed)
-            {
-                _rethinkDbConnection.Dispose();
-
-                GC.SuppressFinalize(this);
-
-                _disposed = true;
-            }
-        }
+        { }
 
         private void ValidateListenerStatus()
         {
@@ -110,9 +101,11 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
 
         private async Task ListenAsync(CancellationToken listenerStoppingToken)
         {
-            Driver.Net.Cursor<DocumentChange> changefeed = await _rethinkDbTable.Changes()
+            Connection rethinkDbConnection = (_rethinkDbConnectionTask.Status == TaskStatus.RanToCompletion) ? _rethinkDbConnectionTask.Result : (await _rethinkDbConnectionTask);
+
+            Cursor<DocumentChange> changefeed = await _rethinkDbTable.Changes()
                 .OptArg("include_types", _includeTypes)
-                .RunCursorAsync<DocumentChange>(_rethinkDbConnection, listenerStoppingToken);
+                .RunCursorAsync<DocumentChange>(rethinkDbConnection, listenerStoppingToken);
 
             while (!listenerStoppingToken.IsCancellationRequested && (await changefeed.MoveNextAsync(listenerStoppingToken)))
             {

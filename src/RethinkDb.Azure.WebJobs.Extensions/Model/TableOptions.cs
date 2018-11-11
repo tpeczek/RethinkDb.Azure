@@ -1,4 +1,6 @@
-﻿namespace RethinkDb.Azure.WebJobs.Extensions.Model
+﻿using System;
+
+namespace RethinkDb.Azure.WebJobs.Extensions.Model
 {
     internal struct TableOptions
     {
@@ -12,8 +14,8 @@
         public TableOptions(string databaseName, string tableName)
             : this()
         {
-            DatabaseName = databaseName;
-            TableName = tableName;
+            DatabaseName = databaseName ?? throw new ArgumentNullException(nameof(databaseName));
+            TableName = tableName ?? throw new ArgumentNullException(nameof(tableName));
         }
         #endregion
     }

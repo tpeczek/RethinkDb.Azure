@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
 using RethinkDb.Azure.WebJobs.Extensions.Model;
 using RethinkDb.Azure.WebJobs.Extensions.Trigger;
+using RethinkDb.Azure.WebJobs.Extensions.Services;
 
 namespace RethinkDb.Azure.WebJobs.Extensions.Config
 {
@@ -16,15 +17,17 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Config
         #region Fields
         private readonly IConfiguration _configuration;
         private readonly RethinkDbOptions _options;
+        private readonly IRethinkDBConnectionFactory _rethinkDBConnectionFactory;
         private readonly INameResolver _nameResolver;
         private readonly ILoggerFactory _loggerFactory;
         #endregion
 
         #region Constructor
-        public RethinkDbExtensionConfigProvider(IConfiguration configuration, IOptions<RethinkDbOptions> options, INameResolver nameResolver, ILoggerFactory loggerFactory)
+        public RethinkDbExtensionConfigProvider(IConfiguration configuration, IOptions<RethinkDbOptions> options, IRethinkDBConnectionFactory rethinkDBConnectionFactory, INameResolver nameResolver, ILoggerFactory loggerFactory)
         {
             _configuration = configuration;
             _options = options.Value;
+            _rethinkDBConnectionFactory = rethinkDBConnectionFactory;
             _nameResolver = nameResolver;
             _loggerFactory = loggerFactory;
         }
@@ -40,7 +43,7 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Config
 
             // RethinkDB Trigger
             var triggerAttributeBindingRule = context.AddBindingRule<RethinkDbTriggerAttribute>();
-            triggerAttributeBindingRule.BindToTrigger<DocumentChange>(new RethinkDbTriggerAttributeBindingProvider(_configuration, _options, _nameResolver, _loggerFactory));
+            triggerAttributeBindingRule.BindToTrigger<DocumentChange>(new RethinkDbTriggerAttributeBindingProvider(_configuration, _options, _rethinkDBConnectionFactory, _nameResolver, _loggerFactory));
         }
         #endregion
     }

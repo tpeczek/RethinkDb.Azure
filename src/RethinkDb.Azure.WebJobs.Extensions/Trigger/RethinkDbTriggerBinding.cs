@@ -6,6 +6,7 @@ using Microsoft.Azure.WebJobs.Host.Bindings;
 using Microsoft.Azure.WebJobs.Host.Listeners;
 using Microsoft.Azure.WebJobs.Host.Protocols;
 using Microsoft.Azure.WebJobs.Host.Triggers;
+using RethinkDb.Driver.Net;
 using RethinkDb.Azure.WebJobs.Extensions.Model;
 
 namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
@@ -14,7 +15,7 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
     {
         #region Fields
         private readonly ParameterInfo _parameter;
-        private readonly Driver.Net.Connection _rethinkDbConnection;
+        private readonly Task<Connection> _rethinkDbConnectionTask;
         private readonly TableOptions _rethinkDbTableOptions;
         private readonly Driver.Ast.Table _rethinkDbTable;
         private readonly bool _includeTypes;
@@ -29,10 +30,10 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
         #endregion
 
         #region Constructor
-        public RethinkDbTriggerBinding(ParameterInfo parameter, Driver.Net.Connection rethinkDbConnection, TableOptions rethinkDbTableOptions, bool includeTypes)
+        public RethinkDbTriggerBinding(ParameterInfo parameter, Task<Connection> rethinkDbConnectionTask, TableOptions rethinkDbTableOptions, bool includeTypes)
         {
             _parameter = parameter;
-            _rethinkDbConnection = rethinkDbConnection;
+            _rethinkDbConnectionTask = rethinkDbConnectionTask;
             _rethinkDbTableOptions = rethinkDbTableOptions;
             _rethinkDbTable = Driver.RethinkDB.R.Db(_rethinkDbTableOptions.DatabaseName).Table(_rethinkDbTableOptions.TableName);
             _includeTypes = includeTypes;
@@ -53,7 +54,7 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
                 throw new ArgumentNullException(nameof(context));
             }
 
-            return Task.FromResult<IListener>(new RethinkDbTriggerListener(context.Executor, _rethinkDbConnection, _rethinkDbTable, _includeTypes));
+            return Task.FromResult<IListener>(new RethinkDbTriggerListener(context.Executor, _rethinkDbConnectionTask, _rethinkDbTable, _includeTypes));
 
         }
 

@@ -6,7 +6,9 @@ using Microsoft.Azure.WebJobs.Host.Triggers;
 using Microsoft.Azure.WebJobs.Logging;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using RethinkDb.Driver.Net;
 using RethinkDb.Azure.WebJobs.Extensions.Model;
+using RethinkDb.Azure.WebJobs.Extensions.Services;
 
 namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
 {
@@ -15,16 +17,19 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
         #region Fields
         private readonly IConfiguration _configuration;
         private readonly RethinkDbOptions _options;
+        private readonly IRethinkDBConnectionFactory _rethinkDBConnectionFactory;
         private readonly INameResolver _nameResolver;
         private readonly ILogger _logger;
+
         private readonly Task<ITriggerBinding> _nullTriggerBindingTask = Task.FromResult<ITriggerBinding>(null);
         #endregion
 
         #region Constructor
-        public RethinkDbTriggerAttributeBindingProvider(IConfiguration configuration, RethinkDbOptions options, INameResolver nameResolver, ILoggerFactory loggerFactory)
+        public RethinkDbTriggerAttributeBindingProvider(IConfiguration configuration, RethinkDbOptions options, IRethinkDBConnectionFactory rethinkDBConnectionFactory, INameResolver nameResolver, ILoggerFactory loggerFactory)
         {
             _configuration = configuration;
             _options = options;
+            _rethinkDBConnectionFactory = rethinkDBConnectionFactory;
             _nameResolver = nameResolver;
             _logger = loggerFactory.CreateLogger(LogCategories.CreateTriggerCategory("RethinkDB"));
         }
@@ -46,13 +51,17 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
                 return _nullTriggerBindingTask;
             }
 
-            Driver.Net.Connection triggerConnection = Driver.RethinkDB.R.Connection()
-                .Hostname(ResolveTriggerAttributeHostname(triggerAttribute))
-                .Connect();
+            ConnectionOptions triggerConnectionOptions = ResolveTriggerConnectionOptions(triggerAttribute);
+            Task<Connection> triggerConnectionTask = _rethinkDBConnectionFactory.GetConnectionAsync(triggerConnectionOptions);
 
             TableOptions triggerTableOptions = ResolveTriggerTableOptions(triggerAttribute);
 
-            return Task.FromResult<ITriggerBinding>(new RethinkDbTriggerBinding(parameter, triggerConnection, triggerTableOptions, triggerAttribute.IncludeTypes));
+            return Task.FromResult<ITriggerBinding>(new RethinkDbTriggerBinding(parameter, triggerConnectionTask, triggerTableOptions, triggerAttribute.IncludeTypes));
+        }
+
+        private ConnectionOptions ResolveTriggerConnectionOptions(RethinkDbTriggerAttribute triggerAttribute)
+        {
+            return new ConnectionOptions(ResolveTriggerAttributeHostname(triggerAttribute));
         }
 
         private string ResolveTriggerAttributeHostname(RethinkDbTriggerAttribute triggerAttribute)
