@@ -3,7 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs.Host.Executors;
 using Microsoft.Azure.WebJobs.Host.Listeners;
-using Microsoft.Extensions.Logging;
 using RethinkDb.Azure.WebJobs.Extensions.Model;
 
 namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
@@ -18,7 +17,7 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
         private readonly ITriggeredFunctionExecutor _executor;
         private readonly Driver.Net.Connection _rethinkDbConnection;
         private readonly Driver.Ast.Table _rethinkDbTable;
-        private readonly ILogger _logger;
+        private readonly bool _includeTypes;
 
         private int _listenerStatus = LISTENER_NOT_REGISTERED;
         private Task _listenerTask;
@@ -28,12 +27,12 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
         #endregion
 
         #region Constructor
-        public RethinkDbTriggerListener(ITriggeredFunctionExecutor executor, Driver.Net.Connection rethinkDbConnection, Driver.Ast.Table rethinkDbTable, ILogger logger)
+        public RethinkDbTriggerListener(ITriggeredFunctionExecutor executor, Driver.Net.Connection rethinkDbConnection, Driver.Ast.Table rethinkDbTable, bool includeTypes)
         {
             _executor = executor;
             _rethinkDbConnection = rethinkDbConnection;
             _rethinkDbTable = rethinkDbTable;
-            _logger = logger;
+            _includeTypes = includeTypes;
         }
         #endregion
 
@@ -111,7 +110,9 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
 
         private async Task ListenAsync(CancellationToken listenerStoppingToken)
         {
-            Driver.Net.Cursor<DocumentChange> changefeed = await _rethinkDbTable.Changes().RunCursorAsync<DocumentChange>(_rethinkDbConnection, listenerStoppingToken);
+            Driver.Net.Cursor<DocumentChange> changefeed = await _rethinkDbTable.Changes()
+                .OptArg("include_types", _includeTypes)
+                .RunCursorAsync<DocumentChange>(_rethinkDbConnection, listenerStoppingToken);
 
             while (!listenerStoppingToken.IsCancellationRequested && (await changefeed.MoveNextAsync(listenerStoppingToken)))
             {

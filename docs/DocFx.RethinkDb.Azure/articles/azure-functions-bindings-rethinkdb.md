@@ -57,11 +57,14 @@ The following table explains the binding configuration properties that you set i
 |**hostnameSetting**|**HostnameSetting** | The name of an app setting that contains hostname or IP address of the RethinkDB server containing the database and table to monitor.. |
 |**databaseName**|**DatabaseName**  | The name of the RethinkDB database with the table to monitor for changes. |
 |**tableName** |**TableName** | The name of the table being monitored. |
+|**includeTypes** |**IncludeTypes** | The value indicating if change type field should be included. |
 
 ### Trigger - usage
 
-The trigger doesn't indicate directly whether a document was inserted, updated or deleted, it just provides the old and new value. In order to determine what was the operation one must base logic on old and new value presence/absence:
+By default the trigger doesn't indicate directly whether a document was inserted, updated or deleted, it just provides the old and new value. In order to determine what was the operation one must base logic on old and new value presence/absence:
 
 - If new value is present and old value absent, the operation was an insert.
 - If new value is absent and old value present, the operation was a delete.
 - If both values are present, the operation was an update.
+
+If this isn't satisfactory, the [`RethinkDbTrigger.IncludeTypes`](../api/Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.html#Microsoft_Azure_WebJobs_RethinkDbTriggerAttribute_IncludeTypes) property can be set to `true` which will result in [`DocumentChange.Type`](../api/RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange.html#RethinkDb_Azure_WebJobs_Extensions_Model_DocumentChange_Type) having a value indicating type of change.

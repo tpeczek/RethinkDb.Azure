@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/Users/tpecz/Projekty/RethinkDb.Azure/docs/DocFx.RethinkDb.Azure",
+  "source_base_path": "C:/Users/tpecz/GitHub/RethinkDb.Azure/docs/DocFx.RethinkDb.Azure",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.html",
-          "hash": "jK3ApVaAzbBR2sUzMY43mQ=="
+          "hash": "o7+6si5bJ9vgGatIFhJAdQ=="
         }
       },
       "is_incremental": false,
@@ -33,7 +33,19 @@
       "output": {
         ".html": {
           "relative_path": "api/RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange.html",
-          "hash": "wUyDsL1/8GJKtwfoCiKi+w=="
+          "hash": "A4bomm/KtgpOutnip1FRUw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.html",
+          "hash": "3cy+Khf4nvTfCu6mX0umhQ=="
         }
       },
       "is_incremental": false,
@@ -45,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/RethinkDb.Azure.WebJobs.Extensions.Model.html",
-          "hash": "4ZA4avGQBp4fUDyq97L3Lg=="
+          "hash": "Yj7R0HHaEcycHoPi+gRjCg=="
         }
       },
       "is_incremental": false,
@@ -105,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "7pl9PGaPW9V/KI2/LKRCQA=="
+          "hash": "EGi/ODQ+5/q51o2tk+DcYA=="
         }
       },
       "is_incremental": false,
@@ -120,7 +132,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/azure-functions-bindings-rethinkdb.html",
-          "hash": "vq4i6NRfeHc6VqfOyJ3mAQ=="
+          "hash": "g3oPCuLrIW8VwZSRgUSFDw=="
         }
       },
       "is_incremental": false,
@@ -184,22 +196,22 @@
         "incrementalPhase": "build"
       },
       "processors": {
-        "TocDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build"
-        },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
           "incrementalPhase": "build"
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build"
         },
-        "ConceptualDocumentProcessor": {
+        "TocDocumentProcessor": {
           "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         }
       }

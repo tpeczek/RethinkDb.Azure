@@ -52,6 +52,19 @@ references:
   isSpec: "True"
   fullName: Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.HostnameSetting
   nameWithType: RethinkDbTriggerAttribute.HostnameSetting
+- uid: Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.IncludeTypes
+  name: IncludeTypes
+  href: api/Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.html#Microsoft_Azure_WebJobs_RethinkDbTriggerAttribute_IncludeTypes
+  commentId: P:Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.IncludeTypes
+  fullName: Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.IncludeTypes
+  nameWithType: RethinkDbTriggerAttribute.IncludeTypes
+- uid: Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.IncludeTypes*
+  name: IncludeTypes
+  href: api/Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.html#Microsoft_Azure_WebJobs_RethinkDbTriggerAttribute_IncludeTypes_
+  commentId: Overload:Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.IncludeTypes
+  isSpec: "True"
+  fullName: Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.IncludeTypes
+  nameWithType: RethinkDbTriggerAttribute.IncludeTypes
 - uid: Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.TableName
   name: TableName
   href: api/Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.html#Microsoft_Azure_WebJobs_RethinkDbTriggerAttribute_TableName
@@ -127,6 +140,61 @@ references:
   fullName.vb: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange.GetOldValue(Of T)()
   nameWithType: DocumentChange.GetOldValue<T>()
   nameWithType.vb: DocumentChange.GetOldValue(Of T)()
+- uid: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange.Type
+  name: Type
+  href: api/RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange.html#RethinkDb_Azure_WebJobs_Extensions_Model_DocumentChange_Type
+  commentId: P:RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange.Type
+  fullName: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange.Type
+  nameWithType: DocumentChange.Type
+- uid: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange.Type*
+  name: Type
+  href: api/RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange.html#RethinkDb_Azure_WebJobs_Extensions_Model_DocumentChange_Type_
+  commentId: Overload:RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange.Type
+  isSpec: "True"
+  fullName: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange.Type
+  nameWithType: DocumentChange.Type
+- uid: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType
+  name: DocumentChangeType
+  href: api/RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.html
+  commentId: T:RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType
+  fullName: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType
+  nameWithType: DocumentChangeType
+- uid: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Add
+  name: Add
+  href: api/RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.html#RethinkDb_Azure_WebJobs_Extensions_Model_DocumentChangeType_Add
+  commentId: F:RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Add
+  fullName: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Add
+  nameWithType: DocumentChangeType.Add
+- uid: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Change
+  name: Change
+  href: api/RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.html#RethinkDb_Azure_WebJobs_Extensions_Model_DocumentChangeType_Change
+  commentId: F:RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Change
+  fullName: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Change
+  nameWithType: DocumentChangeType.Change
+- uid: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Initial
+  name: Initial
+  href: api/RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.html#RethinkDb_Azure_WebJobs_Extensions_Model_DocumentChangeType_Initial
+  commentId: F:RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Initial
+  fullName: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Initial
+  nameWithType: DocumentChangeType.Initial
+- uid: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Remove
+  name: Remove
+  href: api/RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.html#RethinkDb_Azure_WebJobs_Extensions_Model_DocumentChangeType_Remove
+  commentId: F:RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Remove
+  fullName: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Remove
+  nameWithType: DocumentChangeType.Remove
+- uid: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.State
+  name: State
+  href: api/RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.html#RethinkDb_Azure_WebJobs_Extensions_Model_DocumentChangeType_State
+  commentId: F:RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.State
+  fullName: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.State
+  nameWithType: DocumentChangeType.State
+- uid: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Uninitial
+  name: Uninitial
+  href: api/RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.html#RethinkDb_Azure_WebJobs_Extensions_Model_DocumentChangeType_Uninitial
+  commentId: F:RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Uninitial
+  fullName: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Uninitial
+  nameWithType: DocumentChangeType.Uninitial
 - uid: RethinkDb.Azure.WebJobs.Extensions.RethinkDbOptions
   name: RethinkDbOptions
   href: api/RethinkDb.Azure.WebJobs.Extensions.RethinkDbOptions.html

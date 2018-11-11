@@ -8,6 +8,7 @@ items:
   - Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.#ctor(System.String,System.String)
   - Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.DatabaseName
   - Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.HostnameSetting
+  - Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.IncludeTypes
   - Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.TableName
   langs:
   - csharp
@@ -18,10 +19,12 @@ items:
   type: Class
   source:
     remote:
-      path: C:/Users/tpecz/Projekty/RethinkDb.Azure/src/RethinkDb.Azure.WebJobs.Extensions/Trigger/RethinkDbTriggerAttribute.cs
+      path: src/RethinkDb.Azure.WebJobs.Extensions/Trigger/RethinkDbTriggerAttribute.cs
+      branch: master
+      repo: https://github.com/tpeczek/RethinkDb.Azure.git
     id: RethinkDbTriggerAttribute
     path: ../../src/RethinkDb.Azure.WebJobs.Extensions/Trigger/RethinkDbTriggerAttribute.cs
-    startLine: 8
+    startLine: 9
   assemblies:
   - RethinkDb.Azure.WebJobs.Extensions
   namespace: Microsoft.Azure.WebJobs
@@ -117,14 +120,16 @@ items:
   type: Property
   source:
     remote:
-      path: C:/Users/tpecz/Projekty/RethinkDb.Azure/src/RethinkDb.Azure.WebJobs.Extensions/Trigger/RethinkDbTriggerAttribute.cs
+      path: src/RethinkDb.Azure.WebJobs.Extensions/Trigger/RethinkDbTriggerAttribute.cs
+      branch: master
+      repo: https://github.com/tpeczek/RethinkDb.Azure.git
     id: DatabaseName
     path: ../../src/RethinkDb.Azure.WebJobs.Extensions/Trigger/RethinkDbTriggerAttribute.cs
-    startLine: 15
+    startLine: 16
   assemblies:
   - RethinkDb.Azure.WebJobs.Extensions
   namespace: Microsoft.Azure.WebJobs
-  summary: "\nName of the database containing the table to monitor for changes.\n"
+  summary: "\nThe name of the database containing the table to monitor for changes.\n"
   example: []
   syntax:
     content: public string DatabaseName { get; }
@@ -152,14 +157,16 @@ items:
   type: Property
   source:
     remote:
-      path: C:/Users/tpecz/Projekty/RethinkDb.Azure/src/RethinkDb.Azure.WebJobs.Extensions/Trigger/RethinkDbTriggerAttribute.cs
+      path: src/RethinkDb.Azure.WebJobs.Extensions/Trigger/RethinkDbTriggerAttribute.cs
+      branch: master
+      repo: https://github.com/tpeczek/RethinkDb.Azure.git
     id: TableName
     path: ../../src/RethinkDb.Azure.WebJobs.Extensions/Trigger/RethinkDbTriggerAttribute.cs
-    startLine: 20
+    startLine: 21
   assemblies:
   - RethinkDb.Azure.WebJobs.Extensions
   namespace: Microsoft.Azure.WebJobs
-  summary: "\nName of the table to monitor for changes.\n"
+  summary: "\nThe name of the table to monitor for changes.\n"
   example: []
   syntax:
     content: public string TableName { get; }
@@ -187,10 +194,12 @@ items:
   type: Property
   source:
     remote:
-      path: C:/Users/tpecz/Projekty/RethinkDb.Azure/src/RethinkDb.Azure.WebJobs.Extensions/Trigger/RethinkDbTriggerAttribute.cs
+      path: src/RethinkDb.Azure.WebJobs.Extensions/Trigger/RethinkDbTriggerAttribute.cs
+      branch: master
+      repo: https://github.com/tpeczek/RethinkDb.Azure.git
     id: HostnameSetting
     path: ../../src/RethinkDb.Azure.WebJobs.Extensions/Trigger/RethinkDbTriggerAttribute.cs
-    startLine: 25
+    startLine: 26
   assemblies:
   - RethinkDb.Azure.WebJobs.Extensions
   namespace: Microsoft.Azure.WebJobs
@@ -219,6 +228,43 @@ items:
   - set
   modifiers.vb:
   - Public
+- uid: Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.IncludeTypes
+  commentId: P:Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.IncludeTypes
+  id: IncludeTypes
+  parent: Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute
+  langs:
+  - csharp
+  - vb
+  name: IncludeTypes
+  nameWithType: RethinkDbTriggerAttribute.IncludeTypes
+  fullName: Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.IncludeTypes
+  type: Property
+  source:
+    remote:
+      path: src/RethinkDb.Azure.WebJobs.Extensions/Trigger/RethinkDbTriggerAttribute.cs
+      branch: master
+      repo: https://github.com/tpeczek/RethinkDb.Azure.git
+    id: IncludeTypes
+    path: ../../src/RethinkDb.Azure.WebJobs.Extensions/Trigger/RethinkDbTriggerAttribute.cs
+    startLine: 32
+  assemblies:
+  - RethinkDb.Azure.WebJobs.Extensions
+  namespace: Microsoft.Azure.WebJobs
+  summary: "\nThe value indicating if <xref href=\"RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange.Type\" data-throw-if-not-resolved=\"false\"></xref> field should be included for <xref href=\"RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange\" data-throw-if-not-resolved=\"false\"></xref>.\n"
+  example: []
+  syntax:
+    content: public bool IncludeTypes { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IncludeTypes As Boolean
+  overload: Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.IncludeTypes*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
 - uid: Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.#ctor(System.String,System.String)
   commentId: M:Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.#ctor(System.String,System.String)
   id: '#ctor(System.String,System.String)'
@@ -232,10 +278,12 @@ items:
   type: Constructor
   source:
     remote:
-      path: C:/Users/tpecz/Projekty/RethinkDb.Azure/src/RethinkDb.Azure.WebJobs.Extensions/Trigger/RethinkDbTriggerAttribute.cs
+      path: src/RethinkDb.Azure.WebJobs.Extensions/Trigger/RethinkDbTriggerAttribute.cs
+      branch: master
+      repo: https://github.com/tpeczek/RethinkDb.Azure.git
     id: .ctor
     path: ../../src/RethinkDb.Azure.WebJobs.Extensions/Trigger/RethinkDbTriggerAttribute.cs
-    startLine: 33
+    startLine: 39
   assemblies:
   - RethinkDb.Azure.WebJobs.Extensions
   namespace: Microsoft.Azure.WebJobs
@@ -2614,6 +2662,26 @@ references:
   name: HostnameSetting
   nameWithType: RethinkDbTriggerAttribute.HostnameSetting
   fullName: Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.HostnameSetting
+- uid: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange.Type
+  commentId: P:RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange.Type
+  isExternal: true
+- uid: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange
+  commentId: T:RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange
+  name: DocumentChange
+  nameWithType: DocumentChange
+  fullName: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange
+- uid: Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.IncludeTypes*
+  commentId: Overload:Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.IncludeTypes
+  name: IncludeTypes
+  nameWithType: RethinkDbTriggerAttribute.IncludeTypes
+  fullName: Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.IncludeTypes
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
 - uid: Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.#ctor*
   commentId: Overload:Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.#ctor
   name: RethinkDbTriggerAttribute

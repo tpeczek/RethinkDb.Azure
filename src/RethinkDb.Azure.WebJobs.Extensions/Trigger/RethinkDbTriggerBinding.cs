@@ -6,7 +6,6 @@ using Microsoft.Azure.WebJobs.Host.Bindings;
 using Microsoft.Azure.WebJobs.Host.Listeners;
 using Microsoft.Azure.WebJobs.Host.Protocols;
 using Microsoft.Azure.WebJobs.Host.Triggers;
-using Microsoft.Extensions.Logging;
 using RethinkDb.Azure.WebJobs.Extensions.Model;
 
 namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
@@ -16,9 +15,10 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
         #region Fields
         private readonly ParameterInfo _parameter;
         private readonly Driver.Net.Connection _rethinkDbConnection;
-        private readonly string _rethinkDbTableName;
+        private readonly TableOptions _rethinkDbTableOptions;
         private readonly Driver.Ast.Table _rethinkDbTable;
-        private readonly ILogger _logger;
+        private readonly bool _includeTypes;
+
         private readonly Task<ITriggerData> _emptyBindingDataTask = Task.FromResult<ITriggerData>(new TriggerData(null, new Dictionary<string, object>()));
         #endregion
 
@@ -29,13 +29,13 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
         #endregion
 
         #region Constructor
-        public RethinkDbTriggerBinding(ParameterInfo parameter, Driver.Net.Connection rethinkDbConnection, string rethinkDbDatabaseName, string rethinkDbTableName, ILogger logger)
+        public RethinkDbTriggerBinding(ParameterInfo parameter, Driver.Net.Connection rethinkDbConnection, TableOptions rethinkDbTableOptions, bool includeTypes)
         {
             _parameter = parameter;
             _rethinkDbConnection = rethinkDbConnection;
-            _rethinkDbTableName = rethinkDbTableName;
-            _rethinkDbTable = Driver.RethinkDB.R.Db(rethinkDbDatabaseName).Table(rethinkDbTableName);
-            _logger = logger;
+            _rethinkDbTableOptions = rethinkDbTableOptions;
+            _rethinkDbTable = Driver.RethinkDB.R.Db(_rethinkDbTableOptions.DatabaseName).Table(_rethinkDbTableOptions.TableName);
+            _includeTypes = includeTypes;
         }
         #endregion
 
@@ -53,7 +53,7 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
                 throw new ArgumentNullException(nameof(context));
             }
 
-            return Task.FromResult<IListener>(new RethinkDbTriggerListener(context.Executor, _rethinkDbConnection, _rethinkDbTable, _logger));
+            return Task.FromResult<IListener>(new RethinkDbTriggerListener(context.Executor, _rethinkDbConnection, _rethinkDbTable, _includeTypes));
 
         }
 
@@ -63,7 +63,7 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
             {
                 Name = _parameter.Name,
                 Type = RethinkDbTriggerParameterDescriptor.TRIGGER_NAME,
-                TableName = _rethinkDbTableName
+                TableName = _rethinkDbTableOptions.TableName
             };
         }
         #endregion

@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Azure.WebJobs.Description;
+using RethinkDb.Azure.WebJobs.Extensions.Model;
 
 namespace Microsoft.Azure.WebJobs
 {
@@ -11,12 +12,12 @@ namespace Microsoft.Azure.WebJobs
     public sealed class RethinkDbTriggerAttribute : Attribute
     {
         /// <summary>
-        /// Name of the database containing the table to monitor for changes.
+        /// The name of the database containing the table to monitor for changes.
         /// </summary>
         public string DatabaseName { get; private set; }
 
         /// <summary>
-        /// Name of the table to monitor for changes.
+        /// The name of the table to monitor for changes.
         /// </summary>
         public string TableName { get; private set; }
 
@@ -25,6 +26,11 @@ namespace Microsoft.Azure.WebJobs
         /// </summary>
         [AppSetting]
         public string HostnameSetting { get; set; }
+
+        /// <summary>
+        /// The value indicating if <see cref="DocumentChange.Type"/> field should be included for <see cref="DocumentChange"/>.
+        /// </summary>
+        public bool IncludeTypes { get; set; } = false;
 
         /// <summary>
         /// Triggers an event when changes occur on a monitored table

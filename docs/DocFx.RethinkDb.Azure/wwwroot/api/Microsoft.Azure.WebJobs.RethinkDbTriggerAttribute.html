@@ -250,7 +250,7 @@ public sealed class RethinkDbTriggerAttribute : Attribute</code></pre>
   </h3>
   <a id="Microsoft_Azure_WebJobs_RethinkDbTriggerAttribute_DatabaseName_" data-uid="Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.DatabaseName*"></a>
   <h4 id="Microsoft_Azure_WebJobs_RethinkDbTriggerAttribute_DatabaseName" data-uid="Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.DatabaseName">DatabaseName</h4>
-  <div class="markdown level1 summary"><p>Name of the database containing the table to monitor for changes.</p>
+  <div class="markdown level1 summary"><p>The name of the database containing the table to monitor for changes.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -297,9 +297,33 @@ public string HostnameSetting { get; set; }</code></pre>
       </tr>
     </tbody>
   </table>
+  <a id="Microsoft_Azure_WebJobs_RethinkDbTriggerAttribute_IncludeTypes_" data-uid="Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.IncludeTypes*"></a>
+  <h4 id="Microsoft_Azure_WebJobs_RethinkDbTriggerAttribute_IncludeTypes" data-uid="Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.IncludeTypes">IncludeTypes</h4>
+  <div class="markdown level1 summary"><p>The value indicating if <a class="xref" href="RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange.html#RethinkDb_Azure_WebJobs_Extensions_Model_DocumentChange_Type">Type</a> field should be included for <a class="xref" href="RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange.html">DocumentChange</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IncludeTypes { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="Microsoft_Azure_WebJobs_RethinkDbTriggerAttribute_TableName_" data-uid="Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.TableName*"></a>
   <h4 id="Microsoft_Azure_WebJobs_RethinkDbTriggerAttribute_TableName" data-uid="Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.TableName">TableName</h4>
-  <div class="markdown level1 summary"><p>Name of the table to monitor for changes.</p>
+  <div class="markdown level1 summary"><p>The name of the table to monitor for changes.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>

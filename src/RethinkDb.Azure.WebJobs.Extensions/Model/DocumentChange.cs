@@ -1,5 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Azure.WebJobs;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Converters;
 
 namespace RethinkDb.Azure.WebJobs.Extensions.Model
 {
@@ -14,6 +16,15 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Model
 
         [JsonProperty("new_val")]
         private JObject _newValue;
+        #endregion
+
+        #region Properties
+        /// <summary>
+        /// If <see cref="RethinkDbTriggerAttribute.IncludeTypes"/> is set to true, this property will indicate the type of change.
+        /// </summary>
+        [JsonProperty("type")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public DocumentChangeType? Type { get; private set; }
         #endregion
 
         #region Methods

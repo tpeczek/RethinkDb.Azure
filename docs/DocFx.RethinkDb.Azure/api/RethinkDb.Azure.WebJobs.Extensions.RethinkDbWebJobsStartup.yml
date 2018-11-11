@@ -15,7 +15,9 @@ items:
   type: Class
   source:
     remote:
-      path: C:/Users/tpecz/Projekty/RethinkDb.Azure/src/RethinkDb.Azure.WebJobs.Extensions/RethinkDbWebJobsStartup.cs
+      path: src/RethinkDb.Azure.WebJobs.Extensions/RethinkDbWebJobsStartup.cs
+      branch: master
+      repo: https://github.com/tpeczek/RethinkDb.Azure.git
     id: RethinkDbWebJobsStartup
     path: ../../src/RethinkDb.Azure.WebJobs.Extensions/RethinkDbWebJobsStartup.cs
     startLine: 11
@@ -60,7 +62,9 @@ items:
   type: Method
   source:
     remote:
-      path: C:/Users/tpecz/Projekty/RethinkDb.Azure/src/RethinkDb.Azure.WebJobs.Extensions/RethinkDbWebJobsStartup.cs
+      path: src/RethinkDb.Azure.WebJobs.Extensions/RethinkDbWebJobsStartup.cs
+      branch: master
+      repo: https://github.com/tpeczek/RethinkDb.Azure.git
     id: Configure
     path: ../../src/RethinkDb.Azure.WebJobs.Extensions/RethinkDbWebJobsStartup.cs
     startLine: 17

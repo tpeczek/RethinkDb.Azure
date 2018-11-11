@@ -126,15 +126,21 @@ namespace Demo.RethinkDb.Azure.Functions
 <td><strong>TableName</strong></td>
 <td>The name of the table being monitored.</td>
 </tr>
+<tr>
+<td><strong>includeTypes</strong></td>
+<td><strong>IncludeTypes</strong></td>
+<td>The value indicating if change type field should be included.</td>
+</tr>
 </tbody>
 </table>
 <h3 id="trigger---usage">Trigger - usage</h3>
-<p>The trigger doesn&#39;t indicate directly whether a document was inserted, updated or deleted, it just provides the old and new value. In order to determine what was the operation one must base logic on old and new value presence/absence:</p>
+<p>By default the trigger doesn&#39;t indicate directly whether a document was inserted, updated or deleted, it just provides the old and new value. In order to determine what was the operation one must base logic on old and new value presence/absence:</p>
 <ul>
 <li>If new value is present and old value absent, the operation was an insert.</li>
 <li>If new value is absent and old value present, the operation was a delete.</li>
 <li>If both values are present, the operation was an update.</li>
 </ul>
+<p>If this isn&#39;t satisfactory, the <a href="../api/Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.html#Microsoft_Azure_WebJobs_RethinkDbTriggerAttribute_IncludeTypes"><code>RethinkDbTrigger.IncludeTypes</code></a> property can be set to <code>true</code> which will result in <a href="../api/RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange.html#RethinkDb_Azure_WebJobs_Extensions_Model_DocumentChange_Type"><code>DocumentChange.Type</code></a> having a value indicating type of change.</p>
 </article>
           </div>
         </div>

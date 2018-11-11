@@ -1,0 +1,263 @@
+### YamlMime:ManagedReference
+items:
+- uid: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType
+  commentId: T:RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType
+  id: DocumentChangeType
+  parent: RethinkDb.Azure.WebJobs.Extensions.Model
+  children:
+  - RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Add
+  - RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Change
+  - RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Initial
+  - RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Remove
+  - RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.State
+  - RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Uninitial
+  langs:
+  - csharp
+  - vb
+  name: DocumentChangeType
+  nameWithType: DocumentChangeType
+  fullName: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType
+  type: Enum
+  source:
+    remote:
+      path: src/RethinkDb.Azure.WebJobs.Extensions/Model/DocumentChangeType.cs
+      branch: master
+      repo: https://github.com/tpeczek/RethinkDb.Azure.git
+    id: DocumentChangeType
+    path: ../../src/RethinkDb.Azure.WebJobs.Extensions/Model/DocumentChangeType.cs
+    startLine: 5
+  assemblies:
+  - RethinkDb.Azure.WebJobs.Extensions
+  namespace: RethinkDb.Azure.WebJobs.Extensions.Model
+  summary: "\nThe type of <xref href=\"RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange\" data-throw-if-not-resolved=\"false\"></xref>.\n"
+  example: []
+  syntax:
+    content: public enum DocumentChangeType
+    content.vb: Public Enum DocumentChangeType
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Add
+  commentId: F:RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Add
+  id: Add
+  parent: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType
+  langs:
+  - csharp
+  - vb
+  name: Add
+  nameWithType: DocumentChangeType.Add
+  fullName: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Add
+  type: Field
+  source:
+    remote:
+      path: src/RethinkDb.Azure.WebJobs.Extensions/Model/DocumentChangeType.cs
+      branch: master
+      repo: https://github.com/tpeczek/RethinkDb.Azure.git
+    id: Add
+    path: ../../src/RethinkDb.Azure.WebJobs.Extensions/Model/DocumentChangeType.cs
+    startLine: 10
+  assemblies:
+  - RethinkDb.Azure.WebJobs.Extensions
+  namespace: RethinkDb.Azure.WebJobs.Extensions.Model
+  summary: "\nDocument was added.\n"
+  example: []
+  syntax:
+    content: Add = 0
+    return:
+      type: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Remove
+  commentId: F:RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Remove
+  id: Remove
+  parent: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType
+  langs:
+  - csharp
+  - vb
+  name: Remove
+  nameWithType: DocumentChangeType.Remove
+  fullName: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Remove
+  type: Field
+  source:
+    remote:
+      path: src/RethinkDb.Azure.WebJobs.Extensions/Model/DocumentChangeType.cs
+      branch: master
+      repo: https://github.com/tpeczek/RethinkDb.Azure.git
+    id: Remove
+    path: ../../src/RethinkDb.Azure.WebJobs.Extensions/Model/DocumentChangeType.cs
+    startLine: 14
+  assemblies:
+  - RethinkDb.Azure.WebJobs.Extensions
+  namespace: RethinkDb.Azure.WebJobs.Extensions.Model
+  summary: "\nDocument was removed.\n"
+  example: []
+  syntax:
+    content: Remove = 1
+    return:
+      type: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Change
+  commentId: F:RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Change
+  id: Change
+  parent: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType
+  langs:
+  - csharp
+  - vb
+  name: Change
+  nameWithType: DocumentChangeType.Change
+  fullName: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Change
+  type: Field
+  source:
+    remote:
+      path: src/RethinkDb.Azure.WebJobs.Extensions/Model/DocumentChangeType.cs
+      branch: master
+      repo: https://github.com/tpeczek/RethinkDb.Azure.git
+    id: Change
+    path: ../../src/RethinkDb.Azure.WebJobs.Extensions/Model/DocumentChangeType.cs
+    startLine: 18
+  assemblies:
+  - RethinkDb.Azure.WebJobs.Extensions
+  namespace: RethinkDb.Azure.WebJobs.Extensions.Model
+  summary: "\nDocument was changed.\n"
+  example: []
+  syntax:
+    content: Change = 2
+    return:
+      type: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Initial
+  commentId: F:RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Initial
+  id: Initial
+  parent: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType
+  langs:
+  - csharp
+  - vb
+  name: Initial
+  nameWithType: DocumentChangeType.Initial
+  fullName: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Initial
+  type: Field
+  source:
+    remote:
+      path: src/RethinkDb.Azure.WebJobs.Extensions/Model/DocumentChangeType.cs
+      branch: master
+      repo: https://github.com/tpeczek/RethinkDb.Azure.git
+    id: Initial
+    path: ../../src/RethinkDb.Azure.WebJobs.Extensions/Model/DocumentChangeType.cs
+    startLine: 22
+  assemblies:
+  - RethinkDb.Azure.WebJobs.Extensions
+  namespace: RethinkDb.Azure.WebJobs.Extensions.Model
+  summary: "\nInitial document.\n"
+  example: []
+  syntax:
+    content: Initial = 3
+    return:
+      type: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Uninitial
+  commentId: F:RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Uninitial
+  id: Uninitial
+  parent: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType
+  langs:
+  - csharp
+  - vb
+  name: Uninitial
+  nameWithType: DocumentChangeType.Uninitial
+  fullName: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.Uninitial
+  type: Field
+  source:
+    remote:
+      path: src/RethinkDb.Azure.WebJobs.Extensions/Model/DocumentChangeType.cs
+      branch: master
+      repo: https://github.com/tpeczek/RethinkDb.Azure.git
+    id: Uninitial
+    path: ../../src/RethinkDb.Azure.WebJobs.Extensions/Model/DocumentChangeType.cs
+    startLine: 28
+  assemblies:
+  - RethinkDb.Azure.WebJobs.Extensions
+  namespace: RethinkDb.Azure.WebJobs.Extensions.Model
+  summary: "\nIf an initial result for a document has been sent and a change is made to that document that would move it to the unsent part of the result set \n(e.g., a changefeed monitors the top 100 posters, the first 50 have been sent, and poster 48 has become poster 52),\nan &apos;uninitial&apos; notification will be sent, with an old_val field but no new_val field.\n"
+  example: []
+  syntax:
+    content: Uninitial = 4
+    return:
+      type: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.State
+  commentId: F:RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.State
+  id: State
+  parent: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType
+  langs:
+  - csharp
+  - vb
+  name: State
+  nameWithType: DocumentChangeType.State
+  fullName: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.State
+  type: Field
+  source:
+    remote:
+      path: src/RethinkDb.Azure.WebJobs.Extensions/Model/DocumentChangeType.cs
+      branch: master
+      repo: https://github.com/tpeczek/RethinkDb.Azure.git
+    id: State
+    path: ../../src/RethinkDb.Azure.WebJobs.Extensions/Model/DocumentChangeType.cs
+    startLine: 32
+  assemblies:
+  - RethinkDb.Azure.WebJobs.Extensions
+  namespace: RethinkDb.Azure.WebJobs.Extensions.Model
+  summary: "\nA state document.\n"
+  example: []
+  syntax:
+    content: State = 5
+    return:
+      type: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange
+  commentId: T:RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange
+  name: DocumentChange
+  nameWithType: DocumentChange
+  fullName: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange
+- uid: RethinkDb.Azure.WebJobs.Extensions.Model
+  commentId: N:RethinkDb.Azure.WebJobs.Extensions.Model
+  name: RethinkDb.Azure.WebJobs.Extensions.Model
+  nameWithType: RethinkDb.Azure.WebJobs.Extensions.Model
+  fullName: RethinkDb.Azure.WebJobs.Extensions.Model
+- uid: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType
+  commentId: T:RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType
+  parent: RethinkDb.Azure.WebJobs.Extensions.Model
+  name: DocumentChangeType
+  nameWithType: DocumentChangeType
+  fullName: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType

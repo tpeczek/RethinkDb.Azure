@@ -6,6 +6,7 @@ using Microsoft.Azure.WebJobs.Host.Triggers;
 using Microsoft.Azure.WebJobs.Logging;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using RethinkDb.Azure.WebJobs.Extensions.Model;
 
 namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
 {
@@ -45,14 +46,13 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
                 return _nullTriggerBindingTask;
             }
 
-            Driver.Net.Connection rethinkDbConnection = Driver.RethinkDB.R.Connection()
+            Driver.Net.Connection triggerConnection = Driver.RethinkDB.R.Connection()
                 .Hostname(ResolveTriggerAttributeHostname(triggerAttribute))
                 .Connect();
 
-            string triggerDatabaseName = ResolveAttributeValue(triggerAttribute.DatabaseName);
-            string triggerTableName = ResolveAttributeValue(triggerAttribute.TableName);
+            TableOptions triggerTableOptions = ResolveTriggerTableOptions(triggerAttribute);
 
-            return Task.FromResult<ITriggerBinding>(new RethinkDbTriggerBinding(parameter, rethinkDbConnection, triggerDatabaseName, triggerTableName, _logger));
+            return Task.FromResult<ITriggerBinding>(new RethinkDbTriggerBinding(parameter, triggerConnection, triggerTableOptions, triggerAttribute.IncludeTypes));
         }
 
         private string ResolveTriggerAttributeHostname(RethinkDbTriggerAttribute triggerAttribute)
@@ -78,6 +78,14 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
             }
 
             return hostname;
+        }
+
+        private TableOptions ResolveTriggerTableOptions(RethinkDbTriggerAttribute triggerAttribute)
+        {
+            return new TableOptions(
+                ResolveAttributeValue(triggerAttribute.DatabaseName),
+                ResolveAttributeValue(triggerAttribute.TableName)
+            );
         }
 
         private string ResolveAttributeValue(string attributeValue)

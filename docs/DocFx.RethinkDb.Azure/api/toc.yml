@@ -18,3 +18,5 @@
   items:
   - uid: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange
     name: DocumentChange
+  - uid: RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType
+    name: DocumentChangeType
