@@ -34,6 +34,24 @@ namespace Microsoft.Azure.WebJobs
         public string PortSetting { get; set; }
 
         /// <summary>
+        /// The authorization key to the server containing the database and table to monitor.
+        /// </summary>
+        [AppSetting]
+        public string AuthorizationKeySetting { get; set; }
+
+        /// <summary>
+        /// The user account to connect as to the server containing the database and table to monitor.
+        /// </summary>
+        [AppSetting]
+        public string UserSetting { get; set; }
+
+        /// <summary>
+        /// The user account password to connect as to the server containing the database and table to monitor.
+        /// </summary>
+        [AppSetting]
+        public string PasswordSetting { get; set; }
+
+        /// <summary>
         /// The value indicating if <see cref="DocumentChange.Type"/> field should be included for <see cref="DocumentChange"/>.
         /// </summary>
         public bool IncludeTypes { get; set; } = false;

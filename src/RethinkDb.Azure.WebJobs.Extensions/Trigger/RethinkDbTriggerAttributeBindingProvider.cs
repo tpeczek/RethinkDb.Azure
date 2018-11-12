@@ -15,6 +15,8 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
     internal class RethinkDbTriggerAttributeBindingProvider : ITriggerBindingProvider
     {
         #region Fields
+        private const string UNABLE_TO_RESOLVE_APP_SETTING_FORMAT = "Unable to resolve app setting for property '{0}.{1}'. Make sure the app setting exists and has a valid value.";
+
         private readonly IConfiguration _configuration;
         private readonly RethinkDbOptions _options;
         private readonly IRethinkDBConnectionFactory _rethinkDBConnectionFactory;
@@ -63,7 +65,10 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
         {
             return new ConnectionOptions(
                 ResolveTriggerAttributeHostname(triggerAttribute),
-                ResolveTriggerAttributePort(triggerAttribute)
+                ResolveTriggerAttributePort(triggerAttribute),
+                ResolveTriggerAttributeSetting(triggerAttribute.AuthorizationKeySetting, _options.AuthorizationKey),
+                ResolveTriggerAttributeSetting(triggerAttribute.UserSetting, _options.User),
+                ResolveTriggerAttributeSetting(triggerAttribute.PasswordSetting, _options.Password)
             );
         }
 
@@ -76,7 +81,7 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
 
                 if (String.IsNullOrEmpty(hostname))
                 {
-                    throw new InvalidOperationException($"Unable to resolve app setting for property '{nameof(RethinkDbTriggerAttribute)}.{nameof(RethinkDbTriggerAttribute.HostnameSetting)}'. Make sure the app setting exists and has a valid value.");
+                    throw new InvalidOperationException(String.Format(UNABLE_TO_RESOLVE_APP_SETTING_FORMAT, nameof(RethinkDbTriggerAttribute), nameof(RethinkDbTriggerAttribute.HostnameSetting)));
                 }
 
                 return hostname;
@@ -100,13 +105,23 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
 
                 if (String.IsNullOrEmpty(portString) || !Int32.TryParse(portString, out int port))
                 {
-                    throw new InvalidOperationException($"Unable to resolve app setting for property '{nameof(RethinkDbTriggerAttribute)}.{nameof(RethinkDbTriggerAttribute.PortSetting)}'. Make sure the app setting exists and has a valid value.");
+                    throw new InvalidOperationException(String.Format(UNABLE_TO_RESOLVE_APP_SETTING_FORMAT, nameof(RethinkDbTriggerAttribute), nameof(RethinkDbTriggerAttribute.PortSetting)));
                 }
 
                 return port;
             }
 
             return _options.Port;
+        }
+
+        private string ResolveTriggerAttributeSetting(string settingName, string optionsValue)
+        {
+            if (!String.IsNullOrEmpty(settingName))
+            {
+                return _configuration.GetConnectionStringOrSetting(settingName);
+            }
+
+            return optionsValue;
         }
 
         private TableOptions ResolveTriggerTableOptions(RethinkDbTriggerAttribute triggerAttribute)

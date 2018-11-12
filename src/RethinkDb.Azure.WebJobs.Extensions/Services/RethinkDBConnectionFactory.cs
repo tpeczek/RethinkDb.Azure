@@ -39,6 +39,16 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Services
                 connectionBuilder.Port(options.Port.Value);
             }
 
+            if (!(options.AuthorizationKey is null))
+            {
+                connectionBuilder.AuthKey(options.AuthorizationKey);
+            }
+
+            if (!(options.User is null))
+            {
+                connectionBuilder.User(options.User, options.Password);
+            }
+
             return connectionBuilder.ConnectAsync();
         }
         #endregion
