@@ -61,7 +61,10 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
 
         private ConnectionOptions ResolveTriggerConnectionOptions(RethinkDbTriggerAttribute triggerAttribute)
         {
-            return new ConnectionOptions(ResolveTriggerAttributeHostname(triggerAttribute));
+            return new ConnectionOptions(
+                ResolveTriggerAttributeHostname(triggerAttribute),
+                ResolveTriggerAttributePort(triggerAttribute)
+            );
         }
 
         private string ResolveTriggerAttributeHostname(RethinkDbTriggerAttribute triggerAttribute)
@@ -87,6 +90,23 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
             }
 
             return hostname;
+        }
+
+        private int? ResolveTriggerAttributePort(RethinkDbTriggerAttribute triggerAttribute)
+        {
+            if (!String.IsNullOrEmpty(triggerAttribute.PortSetting))
+            {
+                string portString = _configuration.GetConnectionStringOrSetting(triggerAttribute.PortSetting);
+
+                if (String.IsNullOrEmpty(portString) || !Int32.TryParse(portString, out int port))
+                {
+                    throw new InvalidOperationException($"Unable to resolve app setting for property '{nameof(RethinkDbTriggerAttribute)}.{nameof(RethinkDbTriggerAttribute.PortSetting)}'. Make sure the app setting exists and has a valid value.");
+                }
+
+                return port;
+            }
+
+            return _options.Port;
         }
 
         private TableOptions ResolveTriggerTableOptions(RethinkDbTriggerAttribute triggerAttribute)

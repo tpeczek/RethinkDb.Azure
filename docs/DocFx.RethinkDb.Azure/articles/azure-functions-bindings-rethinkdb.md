@@ -54,7 +54,8 @@ The following table explains the binding configuration properties that you set i
 |**type** || Must be set to `rethinkDBTrigger`. |
 |**direction** || Must be set to `in`. This parameter is set automatically when you create the trigger in the Azure portal. |
 |**name** || The variable name used in function code that represents the changed document. | 
-|**hostnameSetting**|**HostnameSetting** | The name of an app setting that contains hostname or IP address of the RethinkDB server containing the database and table to monitor.. |
+|**hostnameSetting**|**HostnameSetting** | The name of an app setting that contains hostname or IP address of the RethinkDB server containing the database and table to monitor. |
+|**portSetting**|**PortSetting** | The name of an app setting that contains TCP port of the RethinkDB server containing the database and table to monitor. |
 |**databaseName**|**DatabaseName**  | The name of the RethinkDB database with the table to monitor for changes. |
 |**tableName** |**TableName** | The name of the table being monitored. |
 |**includeTypes** |**IncludeTypes** | The value indicating if change type field should be included. |

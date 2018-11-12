@@ -28,6 +28,12 @@ namespace Microsoft.Azure.WebJobs
         public string HostnameSetting { get; set; }
 
         /// <summary>
+        /// The TCP port of the server containing the database and table to monitor.
+        /// </summary>
+        [AppSetting]
+        public string PortSetting { get; set; }
+
+        /// <summary>
         /// The value indicating if <see cref="DocumentChange.Type"/> field should be included for <see cref="DocumentChange"/>.
         /// </summary>
         public bool IncludeTypes { get; set; } = false;

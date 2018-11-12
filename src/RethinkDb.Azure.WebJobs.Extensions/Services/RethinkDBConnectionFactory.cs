@@ -34,6 +34,11 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Services
             Connection.Builder connectionBuilder = Driver.RethinkDB.R.Connection()
                 .Hostname(options.Hostname);
 
+            if (options.Port.HasValue)
+            {
+                connectionBuilder.Port(options.Port.Value);
+            }
+
             return connectionBuilder.ConnectAsync();
         }
         #endregion
