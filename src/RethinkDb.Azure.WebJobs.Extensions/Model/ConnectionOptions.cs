@@ -18,16 +18,28 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Model
         public string User { get; }
 
         public string Password { get; }
+
+        public bool EnableSsl { get; }
+
+        public string LicenseTo { get; }
+
+        public string LicenseKey { get; }
         #endregion
 
         #region Constructor
-        public ConnectionOptions(string hostname, int? port, string authorizationKey, string user, string pasword)
+        public ConnectionOptions(string hostname, int? port,
+            string authorizationKey,
+            string user, string pasword,
+            bool enableSsl, string licenseTo, string licenseKey)
         {
             Hostname = hostname ?? throw new ArgumentNullException(nameof(hostname));
             Port = port;
             AuthorizationKey = authorizationKey;
             User = user;
             Password = pasword;
+            EnableSsl = enableSsl;
+            LicenseTo = licenseTo;
+            LicenseKey = licenseKey;
         }
         #endregion
 
@@ -48,14 +60,17 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Model
                 && (Port == other.Port)
                 && (AuthorizationKey == other.AuthorizationKey)
                 && (User == other.User)
-                && (Password == other.Password);
+                && (Password == other.Password)
+                && (EnableSsl == other.EnableSsl)
+                && (LicenseTo == other.LicenseTo)
+                && (LicenseKey == other.LicenseKey);
         }
 
         public override int GetHashCode()
         {
             if (!_hashCode.HasValue)
             {
-                _hashCode = (Hostname, Port, AuthorizationKey, User, Password).GetHashCode();
+                _hashCode = (Hostname, Port, AuthorizationKey, User, Password, EnableSsl, LicenseTo, LicenseKey).GetHashCode();
             }
 
             return _hashCode.Value;

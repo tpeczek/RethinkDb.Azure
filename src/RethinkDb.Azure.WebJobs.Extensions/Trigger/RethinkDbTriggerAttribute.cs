@@ -52,6 +52,25 @@ namespace Microsoft.Azure.WebJobs
         public string PasswordSetting { get; set; }
 
         /// <summary>
+        /// The value indicating if SSL/TLS encryption should be enabled for connection to the server.
+        /// </summary>
+        /// <remarks>The underlying driver (RethinkDb.Driver) requires a commercial license for SSL/TLS encryption.</remarks>
+        [AppSetting]
+        public string EnableSslSetting { get; set; }
+
+        /// <summary>
+        /// The "license to" of underlying driver (RethinkDb.Driver) commercial license.
+        /// </summary>
+        [AppSetting]
+        public string LicenseToSetting { get; set; }
+
+        /// <summary>
+        /// The "license key" of underlying driver (RethinkDb.Driver) commercial license.
+        /// </summary>
+        [AppSetting]
+        public string LicenseKeySetting { get; set; }
+
+        /// <summary>
         /// The value indicating if <see cref="DocumentChange.Type"/> field should be included for <see cref="DocumentChange"/>.
         /// </summary>
         public bool IncludeTypes { get; set; } = false;

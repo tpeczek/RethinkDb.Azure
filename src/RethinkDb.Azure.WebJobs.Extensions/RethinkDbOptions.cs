@@ -29,5 +29,21 @@
         /// The user account password to connect as to the server.
         /// </summary>
         public string Password { get; set; }
+
+        /// <summary>
+        /// The value indicating if SSL/TLS encryption should be enabled for connection to the server.
+        /// </summary>
+        /// <remarks>The underlying driver (RethinkDb.Driver) requires a commercial license for SSL/TLS encryption, <see cref="LicenseTo"/> and <see cref="LicenseKey"/> must be set.</remarks>
+        public bool EnableSsl { get; set; } = false;
+
+        /// <summary>
+        /// The "license to" of underlying driver (RethinkDb.Driver) commercial license.
+        /// </summary>
+        public string LicenseTo { get; set; }
+
+        /// <summary>
+        /// The "license key" of underlying driver (RethinkDb.Driver) commercial license.
+        /// </summary>
+        public string LicenseKey { get; set; }
     }
 }

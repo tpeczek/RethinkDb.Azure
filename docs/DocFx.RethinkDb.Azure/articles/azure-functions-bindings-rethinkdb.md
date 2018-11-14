@@ -59,6 +59,12 @@ The following table explains the binding configuration properties that you set i
 |**databaseName**|**DatabaseName**  | The name of the RethinkDB database with the table to monitor for changes. |
 |**tableName** |**TableName** | The name of the table being monitored. |
 |**includeTypes** |**IncludeTypes** | The value indicating if change type field should be included. |
+|**authorizationKeySetting** |**AuthorizationKeySetting** | The name of an app setting that contains authorization key to the RethinkDB server containing the database and table to monitor. |
+|**userSetting** |**UserSetting** | The name of an app setting that contains user account to connect as to the RethinkDB server containing the database and table to monitor. |
+|**passwordSetting** |**PasswordSetting** | The name of an app setting that contains user account password to connect as to the RethinkDB server containing the database and table to monitor. |
+|**enableSslSetting** |**EnableSslSetting** | The name of an app setting that contains value indicating if SSL/TLS encryption should be enabled for connection to the RethinkDB server containing the database and table to monitor. The underlying driver (RethinkDb.Driver) requires a commercial license for SSL/TLS encryption. |
+|**licenseToSetting** |**LicenseToSetting** | The name of an app setting that contains "license to" of underlying driver (RethinkDb.Driver) commercial license. |
+|**LicenseKeySetting** |**LicenseKeySetting** | The name of an app setting that contains "license key" of underlying driver (RethinkDb.Driver) commercial license. |
 
 ### Trigger - usage
 

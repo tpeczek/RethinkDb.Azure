@@ -68,7 +68,10 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
                 ResolveTriggerAttributePort(triggerAttribute),
                 ResolveTriggerAttributeSetting(triggerAttribute.AuthorizationKeySetting, _options.AuthorizationKey),
                 ResolveTriggerAttributeSetting(triggerAttribute.UserSetting, _options.User),
-                ResolveTriggerAttributeSetting(triggerAttribute.PasswordSetting, _options.Password)
+                ResolveTriggerAttributeSetting(triggerAttribute.PasswordSetting, _options.Password),
+                ResolveTriggerAttributeEnableSsl(triggerAttribute),
+                ResolveTriggerAttributeSetting(triggerAttribute.LicenseToSetting, _options.LicenseTo),
+                ResolveTriggerAttributeSetting(triggerAttribute.LicenseKeySetting, _options.LicenseKey)
             );
         }
 
@@ -112,6 +115,23 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
             }
 
             return _options.Port;
+        }
+
+        private bool ResolveTriggerAttributeEnableSsl(RethinkDbTriggerAttribute triggerAttribute)
+        {
+            if (!String.IsNullOrEmpty(triggerAttribute.EnableSslSetting))
+            {
+                string enableSslString = _configuration.GetConnectionStringOrSetting(triggerAttribute.EnableSslSetting);
+
+                if (String.IsNullOrEmpty(enableSslString) || !Boolean.TryParse(enableSslString, out bool enableSsl))
+                {
+                    throw new InvalidOperationException(String.Format(UNABLE_TO_RESOLVE_APP_SETTING_FORMAT, nameof(RethinkDbTriggerAttribute), nameof(RethinkDbTriggerAttribute.EnableSslSetting)));
+                }
+
+                return enableSsl;
+            }
+
+            return _options.EnableSsl;
         }
 
         private string ResolveTriggerAttributeSetting(string settingName, string optionsValue)

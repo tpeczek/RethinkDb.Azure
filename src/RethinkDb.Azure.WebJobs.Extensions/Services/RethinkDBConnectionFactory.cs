@@ -49,6 +49,11 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Services
                 connectionBuilder.User(options.User, options.Password);
             }
 
+            if (options.EnableSsl)
+            {
+                connectionBuilder.EnableSsl(new SslContext(), options.LicenseTo, options.LicenseKey);
+            }
+
             return connectionBuilder.ConnectAsync();
         }
         #endregion
