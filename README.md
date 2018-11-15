@@ -1,15 +1,20 @@
 # RethinkDb.Azure
 [![NuGet version](https://badge.fury.io/nu/RethinkDb.Azure.WebJobs.Extensions.svg)](http://badge.fury.io/nu/RethinkDb.Azure.WebJobs.Extensions)
 
-Azure extensions for RethinkDB.
+Azure extensions for [RethinkDB](https://www.rethinkdb.com/).
 
-## Functionality
+## What's in here
 
-Currently available functionality are bindings for Azure Functions.
+Content available here originates from a lift and shift migration of existing project to Azure. As part of that migration RethinkDB database has been containerized and deployed to Azure Container Instances. This created a need for further integration of RethinkDB with Azure in order to make certain architectures possible.
+
+Currently you can find here:
+
+- [Dockerfile](https://github.com/tpeczek/RethinkDb.Azure/tree/master/docker) for creating basic RethinkDB Docker image
+- RethinkDB bindings for Azure Functions
 
 ## Demos
 
-The demo project is available as part of solution.
+The demos projects are available as part of solution.
 
 ## Donating
 
