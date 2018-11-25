@@ -17,7 +17,7 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
         private const int LISTENER_REGISTERED = 2;
 
         private readonly ITriggeredFunctionExecutor _executor;
-        private readonly Task<Connection> _rethinkDbConnectionTask;
+        private readonly Task<IConnection> _rethinkDbConnectionTask;
         private readonly Table _rethinkDbTable;
         private readonly bool _includeTypes;
 
@@ -27,7 +27,7 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
         #endregion
 
         #region Constructor
-        public RethinkDbTriggerListener(ITriggeredFunctionExecutor executor, Task<Connection> rethinkDbConnectionTask, Table rethinkDbTable, bool includeTypes)
+        public RethinkDbTriggerListener(ITriggeredFunctionExecutor executor, Task<IConnection> rethinkDbConnectionTask, Table rethinkDbTable, bool includeTypes)
         {
             _executor = executor;
             _rethinkDbConnectionTask = rethinkDbConnectionTask;
@@ -101,7 +101,7 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
 
         private async Task ListenAsync(CancellationToken listenerStoppingToken)
         {
-            Connection rethinkDbConnection = (_rethinkDbConnectionTask.Status == TaskStatus.RanToCompletion) ? _rethinkDbConnectionTask.Result : (await _rethinkDbConnectionTask);
+            IConnection rethinkDbConnection = (_rethinkDbConnectionTask.Status == TaskStatus.RanToCompletion) ? _rethinkDbConnectionTask.Result : (await _rethinkDbConnectionTask);
 
             Cursor<DocumentChange> changefeed = await _rethinkDbTable.Changes()
                 .OptArg("include_types", _includeTypes)

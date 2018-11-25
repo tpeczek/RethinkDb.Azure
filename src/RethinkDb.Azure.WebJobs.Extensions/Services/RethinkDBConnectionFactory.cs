@@ -10,18 +10,18 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Services
     internal class RethinkDBConnectionFactory : IRethinkDBConnectionFactory, IDisposable
     {
         #region Fields
-        private readonly ConcurrentDictionary<ConnectionOptions, Task<Connection>> _connectionCache = new ConcurrentDictionary<ConnectionOptions, Task<Connection>>();
+        private readonly ConcurrentDictionary<ConnectionOptions, Task<IConnection>> _connectionCache = new ConcurrentDictionary<ConnectionOptions, Task<IConnection>>();
         #endregion
 
         #region Methods
-        public Task<Connection> GetConnectionAsync(ConnectionOptions options)
+        public Task<IConnection> GetConnectionAsync(ConnectionOptions options)
         {
             return _connectionCache.GetOrAdd(options, CreateConnectionAsync);
         }
 
         public void Dispose()
         {
-            foreach(KeyValuePair<ConnectionOptions, Task<Connection>> cachedConnection in _connectionCache)
+            foreach(KeyValuePair<ConnectionOptions, Task<IConnection>> cachedConnection in _connectionCache)
             {
                 cachedConnection.Value.Result.Dispose();
             }
@@ -29,7 +29,7 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Services
             GC.SuppressFinalize(this);
         }
 
-        private Task<Connection> CreateConnectionAsync(ConnectionOptions options)
+        private Task<IConnection> CreateConnectionAsync(ConnectionOptions options)
         {
             Connection.Builder connectionBuilder = Driver.RethinkDB.R.Connection()
                 .Hostname(options.Hostname);
@@ -54,7 +54,7 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Services
                 connectionBuilder.EnableSsl(new SslContext(), options.LicenseTo, options.LicenseKey);
             }
 
-            return connectionBuilder.ConnectAsync();
+            return connectionBuilder.ConnectAsync().ContinueWith(t => (IConnection)t.Result);
         }
         #endregion
     }

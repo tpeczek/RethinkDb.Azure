@@ -16,6 +16,5 @@ namespace Demo.RethinkDb.Azure.Functions
         {
             log.LogInformation("[ThreadStats Change Received] " + change.GetNewValue<ThreadStats>());
         }
-
     }
 }

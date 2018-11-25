@@ -15,7 +15,7 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
     {
         #region Fields
         private readonly ParameterInfo _parameter;
-        private readonly Task<Connection> _rethinkDbConnectionTask;
+        private readonly Task<IConnection> _rethinkDbConnectionTask;
         private readonly TableOptions _rethinkDbTableOptions;
         private readonly Driver.Ast.Table _rethinkDbTable;
         private readonly bool _includeTypes;
@@ -30,7 +30,7 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
         #endregion
 
         #region Constructor
-        public RethinkDbTriggerBinding(ParameterInfo parameter, Task<Connection> rethinkDbConnectionTask, TableOptions rethinkDbTableOptions, bool includeTypes)
+        public RethinkDbTriggerBinding(ParameterInfo parameter, Task<IConnection> rethinkDbConnectionTask, TableOptions rethinkDbTableOptions, bool includeTypes)
         {
             _parameter = parameter;
             _rethinkDbConnectionTask = rethinkDbConnectionTask;

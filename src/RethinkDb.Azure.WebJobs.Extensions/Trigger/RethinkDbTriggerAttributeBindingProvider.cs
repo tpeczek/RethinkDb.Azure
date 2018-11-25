@@ -54,7 +54,7 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
             }
 
             ConnectionOptions triggerConnectionOptions = ResolveTriggerConnectionOptions(triggerAttribute);
-            Task<Connection> triggerConnectionTask = _rethinkDBConnectionFactory.GetConnectionAsync(triggerConnectionOptions);
+            Task<IConnection> triggerConnectionTask = _rethinkDBConnectionFactory.GetConnectionAsync(triggerConnectionOptions);
 
             TableOptions triggerTableOptions = ResolveTriggerTableOptions(triggerAttribute);
 

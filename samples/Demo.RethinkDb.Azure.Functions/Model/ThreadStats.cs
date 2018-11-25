@@ -1,6 +1,6 @@
 ﻿namespace Demo.RethinkDb.Azure.Functions.Model
 {
-    internal class ThreadStats
+    public class ThreadStats
     {
         public int WorkerThreads { get; set; }
 

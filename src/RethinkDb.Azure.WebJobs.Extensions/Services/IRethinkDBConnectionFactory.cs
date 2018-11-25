@@ -6,6 +6,6 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Services
 {
     internal interface IRethinkDBConnectionFactory
     {
-        Task<Connection> GetConnectionAsync(ConnectionOptions options);
+        Task<IConnection> GetConnectionAsync(ConnectionOptions options);
     }
 }
