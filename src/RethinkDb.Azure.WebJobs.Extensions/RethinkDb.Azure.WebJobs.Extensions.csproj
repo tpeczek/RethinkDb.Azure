@@ -3,7 +3,7 @@
     <Description>This package contains binding extensions for RethinkDB.</Description>
     <Tags>Azure WebJobs AzureFunctions RethinkDB</Tags>
     <Copyright>Copyright © 2018 Tomasz Pęczek</Copyright>
-    <VersionPrefix>0.1.0-alpha</VersionPrefix>
+    <VersionPrefix>0.3.0-beta</VersionPrefix>
     <Authors>Tomasz Pęczek</Authors>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyTitle>RethinkDb.Azure.WebJobs.Extensions</AssemblyTitle>

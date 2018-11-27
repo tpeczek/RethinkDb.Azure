@@ -84,6 +84,11 @@ namespace Microsoft.Azure.WebJobs
         public string Id { get; set; }
 
         /// <summary>
+        /// The value indicating if database and table should be automatically created if they do not exist (only applies to output bindings).
+        /// </summary>
+        public bool CreateIfNotExists { get; set; } = false;
+
+        /// <summary>
         /// Binds parameter to a RethinkDB table.
         /// </summary>
         /// <param name="databaseName">Name of the database of the table to which the parameter applies (may include binding parameters).</param>

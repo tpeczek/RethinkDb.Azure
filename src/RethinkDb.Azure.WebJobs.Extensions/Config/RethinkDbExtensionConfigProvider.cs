@@ -47,6 +47,7 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Config
             // RethinkDB Bindings
             var bindingAttributeBindingRule = context.AddBindingRule<RethinkDbAttribute>();
             bindingAttributeBindingRule.AddValidator(ValidateHost);
+            bindingAttributeBindingRule.BindToCollector<OpenType>(typeof(RethinkDbCollectorConverter<>), _options, _rethinkDBConnectionFactory);
             bindingAttributeBindingRule.WhenIsNotNull(nameof(RethinkDbAttribute.Id))
                 .BindToValueProvider(CreateValueBinderAsync);
 
@@ -72,25 +73,11 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Config
                 throw new InvalidOperationException($"The '{nameof(RethinkDbAttribute.Id)}' property of a RethinkDB single-item input binding cannot be null or empty.");
             }
 
-            ConnectionOptions connectionOptions = CreateConnectionOptions(attribute);
+            ConnectionOptions connectionOptions = ConnectionOptionsBuilder.Build(attribute, _options);
             Type valyeBinderType = typeof(RethinkDbValueBinder<>).MakeGenericType(type);
             IValueBinder valueBinder = (IValueBinder)Activator.CreateInstance(valyeBinderType, attribute, _rethinkDBConnectionFactory.GetConnectionAsync(connectionOptions));
 
             return Task.FromResult(valueBinder);
-        }
-
-        private ConnectionOptions CreateConnectionOptions(RethinkDbAttribute attribute)
-        {
-            return new ConnectionOptions(
-                attribute.HostnameSetting ?? _options.Hostname,
-                (String.IsNullOrEmpty(attribute.PortSetting) || !Int32.TryParse(attribute.PortSetting, out int port)) ? _options.Port : port,
-                attribute.AuthorizationKeySetting ?? _options.AuthorizationKey,
-                attribute.UserSetting ?? _options.User,
-                attribute.PasswordSetting ?? _options.Password,
-                (String.IsNullOrEmpty(attribute.EnableSslSetting) || !Boolean.TryParse(attribute.EnableSslSetting, out bool enableSsl)) ? _options.EnableSsl : enableSsl,
-                attribute.LicenseToSetting ?? _options.LicenseTo,
-                attribute.LicenseKeySetting ?? _options.LicenseKey
-            );
         }
         #endregion
     }

@@ -64,7 +64,7 @@ The following table explains the binding configuration properties that you set i
 |**passwordSetting** |**PasswordSetting** | The name of an app setting that contains user account password to connect as to the RethinkDB server containing the database and table to monitor. |
 |**enableSslSetting** |**EnableSslSetting** | The name of an app setting that contains value indicating if SSL/TLS encryption should be enabled for connection to the RethinkDB server containing the database and table to monitor. The underlying driver (RethinkDb.Driver) requires a commercial license for SSL/TLS encryption. |
 |**licenseToSetting** |**LicenseToSetting** | The name of an app setting that contains "license to" of underlying driver (RethinkDb.Driver) commercial license. |
-|**LicenseKeySetting** |**LicenseKeySetting** | The name of an app setting that contains "license key" of underlying driver (RethinkDb.Driver) commercial license. |
+|**licenseKeySetting** |**LicenseKeySetting** | The name of an app setting that contains "license key" of underlying driver (RethinkDb.Driver) commercial license. |
 
 ### Trigger - usage
 
@@ -179,8 +179,8 @@ The following table explains the binding configuration properties that you set i
 
 |function.json property | Attribute property |Description|
 |---------|---------|----------------------|
-|**type** || Must be set to `rethinkDBTrigger`. |
-|**direction** || Must be set to `in`. This parameter is set automatically when you create the trigger in the Azure portal. |
+|**type** || Must be set to `rethinkDB`. |
+|**direction** || Must be set to `out`. |
 |**name** || Name of the binding parameter that represents the document in the function. | 
 |**hostnameSetting**|**HostnameSetting** | The name of an app setting that contains hostname or IP address of the RethinkDB server containing the database and table containing the document. |
 |**portSetting**|**PortSetting** | The name of an app setting that contains TCP port of the RethinkDB server containing the database and table containing the document. |
@@ -192,4 +192,144 @@ The following table explains the binding configuration properties that you set i
 |**passwordSetting** |**PasswordSetting** | The name of an app setting that contains user account password to connect as to the RethinkDB server containing the database and table containing the document. |
 |**enableSslSetting** |**EnableSslSetting** | The name of an app setting that contains value indicating if SSL/TLS encryption should be enabled for connection to the RethinkDB server containing the database and table containing the document. The underlying driver (RethinkDb.Driver) requires a commercial license for SSL/TLS encryption. |
 |**licenseToSetting** |**LicenseToSetting** | The name of an app setting that contains "license to" of underlying driver (RethinkDb.Driver) commercial license. |
-|**LicenseKeySetting** |**LicenseKeySetting** | The name of an app setting that contains "license key" of underlying driver (RethinkDb.Driver) commercial license. |
+|**licenseKeySetting** |**LicenseKeySetting** | The name of an app setting that contains "license key" of underlying driver (RethinkDb.Driver) commercial license. |
+
+## Output
+The RethinkDB output binding lets you write a new document to a RethinkDB database using the ReQL API.
+
+### Output - language-specific examples
+
+#### Output - C# examples
+In [C# class libraries](https://docs.microsoft.com/en-us/azure/azure-functions/functions-dotnet-class-library), use the [`RethinkDb`](../api/Microsoft.Azure.WebJobs.RethinkDbAttribute.html) attribute.
+
+The attribute's constructor takes the database name and table name. For information about those settings and other properties that you can configure, see [Output - configuration](#output---configuration).
+
+This section contains the following examples:
+- [HTTP trigger, write single document](#http-trigger-write-single-document)
+- [HTTP trigger, write multiple documents using IAsyncCollector](#http-trigger-write-multiple-documents-using-iasynccollector)
+
+##### HTTP trigger, write single document
+The following example shows a [C# function](https://docs.microsoft.com/en-us/azure/azure-functions/functions-dotnet-class-library) that adds a document to a database by using an output parameter.
+
+```cs
+using System;
+using System.Threading;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+
+namespace Demo.RethinkDb.Azure.Functions
+{
+    public static class RethinkDbOutputFunctions
+    {
+        [FunctionName("OutputSingleDoc")]
+        public static IActionResult OutputSingleDoc(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post")]HttpRequest request,
+            [RethinkDb(
+                databaseName: "Demo_AspNetCore_Changefeed_RethinkDB",
+                tableName: "ThreadStats",
+                HostnameSetting = "RethinkDbHostname")] out dynamic document,
+            ILogger log)
+        {
+            Guid id = Guid.NewGuid();
+            ThreadPool.GetAvailableThreads(out var workerThreads, out var _);
+            ThreadPool.GetMinThreads(out var minThreads, out var _);
+            ThreadPool.GetMaxThreads(out var maxThreads, out var _);
+
+            document = new
+            {
+                id,
+                WorkerThreads = workerThreads,
+                MinThreads = minThreads,
+                MaxThreads = maxThreads,
+                _source = nameof(RethinkDbOutputFunctions) + "." + nameof(OutputSingleDoc)
+            };
+
+            log.LogInformation("C# HTTP trigger function inserted single document");
+
+            return new ObjectResult(document);
+        }
+    }
+}
+```
+
+##### HTTP trigger, write multiple documents using IAsyncCollector
+The following example shows a [C# function](https://docs.microsoft.com/en-us/azure/azure-functions/functions-dotnet-class-library) that adds a collection of documents to a database by using an `IAsyncCollector`.
+
+```cs
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Demo.RethinkDb.Azure.Functions.Model;
+
+namespace Demo.RethinkDb.Azure.Functions
+{
+    public static class RethinkDbOutputFunctions
+    {
+
+        [FunctionName("OutputMultipleDocs")]
+        public static async Task<IActionResult> OutputMultipleDocs(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post")]HttpRequest request,
+            [RethinkDb(
+                databaseName: "Demo_AspNetCore_Changefeed_RethinkDB",
+                tableName: "ThreadStats",
+                HostnameSetting = "RethinkDbHostname")] IAsyncCollector<ThreadStats> threadStatsCollector,
+            ILogger log)
+        {
+            Int32.TryParse(request.Query["count"], out int count);
+            Int32.TryParse(request.Query["delay"], out int delay);
+
+            for (int i = 0; i < count; i++)
+            {
+                ThreadPool.GetAvailableThreads(out var workerThreads, out var _);
+                ThreadPool.GetMinThreads(out var minThreads, out var _);
+                ThreadPool.GetMaxThreads(out var maxThreads, out var _);
+
+                await threadStatsCollector.AddAsync(new ThreadStats
+                {
+                    WorkerThreads = workerThreads,
+                    MinThreads = minThreads,
+                    MaxThreads = maxThreads
+                });
+
+                await Task.Delay(delay);
+            }
+
+            log.LogInformation($"C# HTTP trigger function inserted {count} documents");
+
+            return new OkResult();
+        }
+    }
+}
+```
+
+### Output - configuration
+
+The following table explains the binding configuration properties that you set in the *function.json* file and the [`RethinkDb`](../api/Microsoft.Azure.WebJobs.RethinkDbAttribute.html) attribute.
+
+|function.json property | Attribute property |Description|
+|---------|---------|----------------------|
+|**type** || Must be set to `rethinkDB`. |
+|**direction** || Must be set to `out`. |
+|**name** || Name of the binding parameter that represents the document in the function. | 
+|**hostnameSetting**|**HostnameSetting** | The name of an app setting that contains hostname or IP address of the RethinkDB server containing the database and table containing the document. |
+|**portSetting**|**PortSetting** | The name of an app setting that contains TCP port of the RethinkDB server containing the database and table containing the document. |
+|**databaseName**|**DatabaseName**  | The name of the RethinkDB database with the table containing the document. |
+|**tableName** |**TableName** | The name of the table containing the document. |
+]|**createIfNotExists** |**CreateIfNotExists** | A boolean value to indicate whether the table is created when it doesn't exist. |
+|**authorizationKeySetting** |**AuthorizationKeySetting** | The name of an app setting that contains authorization key to the RethinkDB server containing the database and table containing the document. |
+|**userSetting** |**UserSetting** | The name of an app setting that contains user account to connect as to the RethinkDB server containing the database and table containing the document. |
+|**passwordSetting** |**PasswordSetting** | The name of an app setting that contains user account password to connect as to the RethinkDB server containing the database and table containing the document. |
+|**enableSslSetting** |**EnableSslSetting** | The name of an app setting that contains value indicating if SSL/TLS encryption should be enabled for connection to the RethinkDB server containing the database and table containing the document. The underlying driver (RethinkDb.Driver) requires a commercial license for SSL/TLS encryption. |
+|**licenseToSetting** |**LicenseToSetting** | The name of an app setting that contains "license to" of underlying driver (RethinkDb.Driver) commercial license. |
+|**licenseKeySetting** |**LicenseKeySetting** | The name of an app setting that contains "license key" of underlying driver (RethinkDb.Driver) commercial license. |
+
+### Output - usage
+By default, when you write to the output parameter (or use `IAsyncCollector.AddAsync`) in your function, a document is created in your database. This document has an automatically generated identifier. You can specify the document identifier by specifying the id property. When document has identifier, the performed opertion will not be an insert but an upsert.
