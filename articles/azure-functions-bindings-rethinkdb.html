@@ -1,0 +1,559 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>RethinkDB bindings for Azure Functions | RethinkDb.Azure </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="RethinkDB bindings for Azure Functions | RethinkDb.Azure ">
+    <meta name="generator" content="docfx 2.40.1.0">
+    
+    <link rel="shortcut icon" href="../resources/ico/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../resources/svg/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-12">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="rethinkdb-bindings-for-azure-functions">RethinkDB bindings for Azure Functions</h1>
+
+<p>The RethinkDB bindings for Azure Functions supports trigger, input, and output bindings.</p>
+<h2 id="packages">Packages</h2>
+<p>The RethinkDB bindings for Azure Functions are provided in the <a href="http://www.nuget.org/packages/RethinkDb.Azure.WebJobs.Extensions">RethinkDb.Azure.WebJobs.Extensions</a> NuGet package.</p>
+<pre><code>PM&gt;  Install-Package RethinkDb.Azure.WebJobs.Extensions
+</code></pre><h2 id="trigger">Trigger</h2>
+<p>The RethinkDB Trigger uses the <a href="https://rethinkdb.com/docs/changefeeds/">RethinkDB Changefeeds</a> to listen for inserts, updates and deletes.</p>
+<h3 id="trigger---language-specific-examples">Trigger - language-specific examples</h3>
+<h4 id="trigger---c-example">Trigger - C# example</h4>
+<p>In <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-dotnet-class-library">C# class libraries</a>, use the <a href="../api/Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.html"><code>RethinkDbTrigger</code></a> attribute.</p>
+<p>The attribute&#39;s constructor takes the database name and table name. For information about those settings and other properties that you can configure, see <a href="#trigger---configuration">Trigger - configuration</a>.</p>
+<p>The following example shows a <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-dotnet-class-library">C# function</a> that is invoked when there are inserts, updates or deletes in the specified database and table.</p>
+<pre><code class="lang-cs">using Microsoft.Extensions.Logging;
+using RethinkDb.Azure.WebJobs.Extensions.Model;
+using Demo.RethinkDb.Azure.Functions.Model;
+
+namespace Demo.RethinkDb.Azure.Functions
+{
+    public static class RethinkDbTriggeredFunction
+    {
+        [FunctionName(&quot;RethinkDbTriggeredFunction&quot;)]
+        public static void Run([RethinkDbTrigger(
+            databaseName: &quot;ThreadStatsDb&quot;,
+            tableName: &quot;ThreadStats&quot;,
+            HostnameSetting = &quot;RethinkDbHostname&quot;)]DocumentChange change,
+            ILogger log)
+        {
+            log.LogInformation(Document modified: &quot; + change.GetNewValue());
+        }
+
+    }
+}
+</code></pre><h3 id="trigger---configuration">Trigger - configuration</h3>
+<p>The following table explains the binding configuration properties that you set in the <em>function.json</em> file and the <a href="../api/Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.html"><code>RethinkDbTrigger</code></a> attribute.</p>
+<table>
+<thead>
+<tr>
+<th>function.json property</th>
+<th>Attribute property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>type</strong></td>
+<td></td>
+<td>Must be set to <code>rethinkDBTrigger</code>.</td>
+</tr>
+<tr>
+<td><strong>direction</strong></td>
+<td></td>
+<td>Must be set to <code>in</code>. This parameter is set automatically when you create the trigger in the Azure portal.</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td></td>
+<td>The variable name used in function code that represents the changed document.</td>
+</tr>
+<tr>
+<td><strong>hostnameSetting</strong></td>
+<td><strong>HostnameSetting</strong></td>
+<td>The name of an app setting that contains hostname or IP address of the RethinkDB server containing the database and table to monitor.</td>
+</tr>
+<tr>
+<td><strong>portSetting</strong></td>
+<td><strong>PortSetting</strong></td>
+<td>The name of an app setting that contains TCP port of the RethinkDB server containing the database and table to monitor.</td>
+</tr>
+<tr>
+<td><strong>databaseName</strong></td>
+<td><strong>DatabaseName</strong></td>
+<td>The name of the RethinkDB database with the table to monitor for changes.</td>
+</tr>
+<tr>
+<td><strong>tableName</strong></td>
+<td><strong>TableName</strong></td>
+<td>The name of the table being monitored.</td>
+</tr>
+<tr>
+<td><strong>includeTypes</strong></td>
+<td><strong>IncludeTypes</strong></td>
+<td>The value indicating if change type field should be included.</td>
+</tr>
+<tr>
+<td><strong>authorizationKeySetting</strong></td>
+<td><strong>AuthorizationKeySetting</strong></td>
+<td>The name of an app setting that contains authorization key to the RethinkDB server containing the database and table to monitor.</td>
+</tr>
+<tr>
+<td><strong>userSetting</strong></td>
+<td><strong>UserSetting</strong></td>
+<td>The name of an app setting that contains user account to connect as to the RethinkDB server containing the database and table to monitor.</td>
+</tr>
+<tr>
+<td><strong>passwordSetting</strong></td>
+<td><strong>PasswordSetting</strong></td>
+<td>The name of an app setting that contains user account password to connect as to the RethinkDB server containing the database and table to monitor.</td>
+</tr>
+<tr>
+<td><strong>enableSslSetting</strong></td>
+<td><strong>EnableSslSetting</strong></td>
+<td>The name of an app setting that contains value indicating if SSL/TLS encryption should be enabled for connection to the RethinkDB server containing the database and table to monitor. The underlying driver (RethinkDb.Driver) requires a commercial license for SSL/TLS encryption.</td>
+</tr>
+<tr>
+<td><strong>licenseToSetting</strong></td>
+<td><strong>LicenseToSetting</strong></td>
+<td>The name of an app setting that contains &quot;license to&quot; of underlying driver (RethinkDb.Driver) commercial license.</td>
+</tr>
+<tr>
+<td><strong>licenseKeySetting</strong></td>
+<td><strong>LicenseKeySetting</strong></td>
+<td>The name of an app setting that contains &quot;license key&quot; of underlying driver (RethinkDb.Driver) commercial license.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="trigger---usage">Trigger - usage</h3>
+<p>By default the trigger doesn&#39;t indicate directly whether a document was inserted, updated or deleted, it just provides the old and new value. In order to determine what was the operation one must base logic on old and new value presence/absence:</p>
+<ul>
+<li>If new value is present and old value absent, the operation was an insert.</li>
+<li>If new value is absent and old value present, the operation was a delete.</li>
+<li>If both values are present, the operation was an update.</li>
+</ul>
+<p>If this isn&#39;t satisfactory, the <a href="../api/Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.html#Microsoft_Azure_WebJobs_RethinkDbTriggerAttribute_IncludeTypes"><code>RethinkDbTrigger.IncludeTypes</code></a> property can be set to <code>true</code> which will result in <a href="../api/RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange.html#RethinkDb_Azure_WebJobs_Extensions_Model_DocumentChange_Type"><code>DocumentChange.Type</code></a> having a value indicating type of change.</p>
+<h2 id="input">Input</h2>
+<p>The RethinkDB input binding uses the ReQL API to retrieve RethinkDB document and passes it to the input parameter of the function. The document identifer can be determined based on the trigger that invokes the function. </p>
+<h3 id="input---language-specific-examples">Input - language-specific examples</h3>
+<h4 id="input---c-examples">Input - C# examples</h4>
+<p>In <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-dotnet-class-library">C# class libraries</a>, use the <a href="../api/Microsoft.Azure.WebJobs.RethinkDbAttribute.html"><code>RethinkDb</code></a> attribute.</p>
+<p>The attribute&#39;s constructor takes the database name and table name. For information about those settings and other properties that you can configure, see <a href="#input---configuration">Input - configuration</a>.</p>
+<p>When the function exits successfully, any changes made to the input document via named input parameters are automatically persisted.</p>
+<p>This section contains the following examples:</p>
+<ul>
+<li><a href="#http-trigger-look-up-id-from-query-string">HTTP trigger, look up ID from query string</a></li>
+<li><a href="#http-trigger-look-up-id-from-route-data">HTTP trigger, look up ID from route data</a></li>
+</ul>
+<h5 id="http-trigger-look-up-id-from-query-string">HTTP trigger, look up ID from query string</h5>
+<p>The following example shows a <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-dotnet-class-library">C# function</a> that retrieves a single document. The function is triggered by an HTTP request that uses a query string to specify the ID to look up.</p>
+<pre><code class="lang-cs">using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+using Demo.RethinkDb.Azure.Functions.Model;
+
+namespace Demo.RethinkDb.Azure.Functions
+{
+    public static class RethinkDbInputFunctions
+    {
+        [FunctionName(&quot;QueryByIdFromQueryString&quot;)]
+        public static IActionResult QueryByIdFromQueryString(
+            [HttpTrigger(AuthorizationLevel.Anonymous, &quot;get&quot;)]HttpRequest request,
+            [RethinkDb(
+                databaseName: &quot;Demo_AspNetCore_Changefeed_RethinkDB&quot;,
+                tableName: &quot;ThreadStats&quot;,
+                HostnameSetting = &quot;RethinkDbHostname&quot;,
+                Id = &quot;{Query.id}&quot;)] ThreadStats threadStats,
+            ILogger log)
+        {
+            log.LogInformation(&quot;C# HTTP trigger function processed a request.&quot;);
+
+            if (threadStats == null)
+            {
+                log.LogInformation($&quot;Thread stats not found (Query[&#39;id&#39;]: {request.Query[&quot;id&quot;]}).&quot;);
+                return new NotFoundResult();
+            }
+
+            log.LogInformation($&quot;Thread stats found (Query[&#39;id&#39;]: {request.Query[&quot;id&quot;]}).&quot;);
+            return new ObjectResult(threadStats);
+        }
+    }
+}
+</code></pre><h5 id="http-trigger-look-up-id-from-route-data">HTTP trigger, look up ID from route data</h5>
+<p>The following example shows a <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-dotnet-class-library">C# function</a> that retrieves a single document. The function is triggered by an HTTP request that uses route data to specify the ID to look up.</p>
+<pre><code class="lang-cs">using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+using Demo.RethinkDb.Azure.Functions.Model;
+
+namespace Demo.RethinkDb.Azure.Functions
+{
+    public static class RethinkDbInputFunctions
+    {
+        [FunctionName(&quot;QueryByIdFromRouteData&quot;)]
+        public static IActionResult QueryByIdFromRouteData(
+            [HttpTrigger(AuthorizationLevel.Anonymous, &quot;get&quot;, Route = &quot;QueryByIdFromRouteData/{id}&quot;)]HttpRequest request,
+            [RethinkDb(
+                databaseName: &quot;Demo_AspNetCore_Changefeed_RethinkDB&quot;,
+                tableName: &quot;ThreadStats&quot;,
+                HostnameSetting = &quot;RethinkDbHostname&quot;,
+                Id = &quot;{id}&quot;)] ThreadStats threadStats,
+            ILogger log)
+        {
+            log.LogInformation(&quot;C# HTTP trigger function processed a request.&quot;);
+
+            if (threadStats == null)
+            {
+                log.LogInformation($&quot;Thread stats not found.&quot;);
+                return new NotFoundResult();
+            }
+
+            log.LogInformation($&quot;Thread stats found.&quot;);
+            return new ObjectResult(threadStats);
+        }
+    }
+}
+</code></pre><h3 id="input---configuration">Input - configuration</h3>
+<p>The following table explains the binding configuration properties that you set in the <em>function.json</em> file and the <a href="../api/Microsoft.Azure.WebJobs.RethinkDbAttribute.html"><code>RethinkDb</code></a> attribute.</p>
+<table>
+<thead>
+<tr>
+<th>function.json property</th>
+<th>Attribute property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>type</strong></td>
+<td></td>
+<td>Must be set to <code>rethinkDB</code>.</td>
+</tr>
+<tr>
+<td><strong>direction</strong></td>
+<td></td>
+<td>Must be set to <code>out</code>.</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td></td>
+<td>Name of the binding parameter that represents the document in the function.</td>
+</tr>
+<tr>
+<td><strong>hostnameSetting</strong></td>
+<td><strong>HostnameSetting</strong></td>
+<td>The name of an app setting that contains hostname or IP address of the RethinkDB server containing the database and table containing the document.</td>
+</tr>
+<tr>
+<td><strong>portSetting</strong></td>
+<td><strong>PortSetting</strong></td>
+<td>The name of an app setting that contains TCP port of the RethinkDB server containing the database and table containing the document.</td>
+</tr>
+<tr>
+<td><strong>databaseName</strong></td>
+<td><strong>DatabaseName</strong></td>
+<td>The name of the RethinkDB database with the table containing the document.</td>
+</tr>
+<tr>
+<td><strong>tableName</strong></td>
+<td><strong>TableName</strong></td>
+<td>The name of the table containing the document.</td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>Id</strong></td>
+<td>The ID of the document to retrieve. This property supports binding expressions.</td>
+</tr>
+<tr>
+<td><strong>authorizationKeySetting</strong></td>
+<td><strong>AuthorizationKeySetting</strong></td>
+<td>The name of an app setting that contains authorization key to the RethinkDB server containing the database and table containing the document.</td>
+</tr>
+<tr>
+<td><strong>userSetting</strong></td>
+<td><strong>UserSetting</strong></td>
+<td>The name of an app setting that contains user account to connect as to the RethinkDB server containing the database and table containing the document.</td>
+</tr>
+<tr>
+<td><strong>passwordSetting</strong></td>
+<td><strong>PasswordSetting</strong></td>
+<td>The name of an app setting that contains user account password to connect as to the RethinkDB server containing the database and table containing the document.</td>
+</tr>
+<tr>
+<td><strong>enableSslSetting</strong></td>
+<td><strong>EnableSslSetting</strong></td>
+<td>The name of an app setting that contains value indicating if SSL/TLS encryption should be enabled for connection to the RethinkDB server containing the database and table containing the document. The underlying driver (RethinkDb.Driver) requires a commercial license for SSL/TLS encryption.</td>
+</tr>
+<tr>
+<td><strong>licenseToSetting</strong></td>
+<td><strong>LicenseToSetting</strong></td>
+<td>The name of an app setting that contains &quot;license to&quot; of underlying driver (RethinkDb.Driver) commercial license.</td>
+</tr>
+<tr>
+<td><strong>licenseKeySetting</strong></td>
+<td><strong>LicenseKeySetting</strong></td>
+<td>The name of an app setting that contains &quot;license key&quot; of underlying driver (RethinkDb.Driver) commercial license.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="output">Output</h2>
+<p>The RethinkDB output binding lets you write a new document to a RethinkDB database using the ReQL API.</p>
+<h3 id="output---language-specific-examples">Output - language-specific examples</h3>
+<h4 id="output---c-examples">Output - C# examples</h4>
+<p>In <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-dotnet-class-library">C# class libraries</a>, use the <a href="../api/Microsoft.Azure.WebJobs.RethinkDbAttribute.html"><code>RethinkDb</code></a> attribute.</p>
+<p>The attribute&#39;s constructor takes the database name and table name. For information about those settings and other properties that you can configure, see <a href="#output---configuration">Output - configuration</a>.</p>
+<p>This section contains the following examples:</p>
+<ul>
+<li><a href="#http-trigger-write-single-document">HTTP trigger, write single document</a></li>
+<li><a href="#http-trigger-write-multiple-documents-using-iasynccollector">HTTP trigger, write multiple documents using IAsyncCollector</a></li>
+</ul>
+<h5 id="http-trigger-write-single-document">HTTP trigger, write single document</h5>
+<p>The following example shows a <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-dotnet-class-library">C# function</a> that adds a document to a database by using an output parameter.</p>
+<pre><code class="lang-cs">using System;
+using System.Threading;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+
+namespace Demo.RethinkDb.Azure.Functions
+{
+    public static class RethinkDbOutputFunctions
+    {
+        [FunctionName(&quot;OutputSingleDoc&quot;)]
+        public static IActionResult OutputSingleDoc(
+            [HttpTrigger(AuthorizationLevel.Anonymous, &quot;post&quot;)]HttpRequest request,
+            [RethinkDb(
+                databaseName: &quot;Demo_AspNetCore_Changefeed_RethinkDB&quot;,
+                tableName: &quot;ThreadStats&quot;,
+                HostnameSetting = &quot;RethinkDbHostname&quot;)] out dynamic document,
+            ILogger log)
+        {
+            Guid id = Guid.NewGuid();
+            ThreadPool.GetAvailableThreads(out var workerThreads, out var _);
+            ThreadPool.GetMinThreads(out var minThreads, out var _);
+            ThreadPool.GetMaxThreads(out var maxThreads, out var _);
+
+            document = new
+            {
+                id,
+                WorkerThreads = workerThreads,
+                MinThreads = minThreads,
+                MaxThreads = maxThreads,
+                _source = nameof(RethinkDbOutputFunctions) + &quot;.&quot; + nameof(OutputSingleDoc)
+            };
+
+            log.LogInformation(&quot;C# HTTP trigger function inserted single document&quot;);
+
+            return new ObjectResult(document);
+        }
+    }
+}
+</code></pre><h5 id="http-trigger-write-multiple-documents-using-iasynccollector">HTTP trigger, write multiple documents using IAsyncCollector</h5>
+<p>The following example shows a <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-dotnet-class-library">C# function</a> that adds a collection of documents to a database by using an <code>IAsyncCollector</code>.</p>
+<pre><code class="lang-cs">using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Demo.RethinkDb.Azure.Functions.Model;
+
+namespace Demo.RethinkDb.Azure.Functions
+{
+    public static class RethinkDbOutputFunctions
+    {
+
+        [FunctionName(&quot;OutputMultipleDocs&quot;)]
+        public static async Task&lt;IActionResult&gt; OutputMultipleDocs(
+            [HttpTrigger(AuthorizationLevel.Anonymous, &quot;post&quot;)]HttpRequest request,
+            [RethinkDb(
+                databaseName: &quot;Demo_AspNetCore_Changefeed_RethinkDB&quot;,
+                tableName: &quot;ThreadStats&quot;,
+                HostnameSetting = &quot;RethinkDbHostname&quot;)] IAsyncCollector&lt;ThreadStats&gt; threadStatsCollector,
+            ILogger log)
+        {
+            Int32.TryParse(request.Query[&quot;count&quot;], out int count);
+            Int32.TryParse(request.Query[&quot;delay&quot;], out int delay);
+
+            for (int i = 0; i &lt; count; i++)
+            {
+                ThreadPool.GetAvailableThreads(out var workerThreads, out var _);
+                ThreadPool.GetMinThreads(out var minThreads, out var _);
+                ThreadPool.GetMaxThreads(out var maxThreads, out var _);
+
+                await threadStatsCollector.AddAsync(new ThreadStats
+                {
+                    WorkerThreads = workerThreads,
+                    MinThreads = minThreads,
+                    MaxThreads = maxThreads
+                });
+
+                await Task.Delay(delay);
+            }
+
+            log.LogInformation($&quot;C# HTTP trigger function inserted {count} documents&quot;);
+
+            return new OkResult();
+        }
+    }
+}
+</code></pre><h3 id="output---configuration">Output - configuration</h3>
+<p>The following table explains the binding configuration properties that you set in the <em>function.json</em> file and the <a href="../api/Microsoft.Azure.WebJobs.RethinkDbAttribute.html"><code>RethinkDb</code></a> attribute.</p>
+<table>
+<thead>
+<tr>
+<th>function.json property</th>
+<th>Attribute property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>type</strong></td>
+<td></td>
+<td>Must be set to <code>rethinkDB</code>.</td>
+</tr>
+<tr>
+<td><strong>direction</strong></td>
+<td></td>
+<td>Must be set to <code>out</code>.</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td></td>
+<td>Name of the binding parameter that represents the document in the function.</td>
+</tr>
+<tr>
+<td><strong>hostnameSetting</strong></td>
+<td><strong>HostnameSetting</strong></td>
+<td>The name of an app setting that contains hostname or IP address of the RethinkDB server containing the database and table containing the document.</td>
+</tr>
+<tr>
+<td><strong>portSetting</strong></td>
+<td><strong>PortSetting</strong></td>
+<td>The name of an app setting that contains TCP port of the RethinkDB server containing the database and table containing the document.</td>
+</tr>
+<tr>
+<td><strong>databaseName</strong></td>
+<td><strong>DatabaseName</strong></td>
+<td>The name of the RethinkDB database with the table containing the document.</td>
+</tr>
+<tr>
+<td><strong>tableName</strong></td>
+<td><strong>TableName</strong></td>
+<td>The name of the table containing the document.</td>
+</tr>
+<tr>
+<td>]</td>
+<td><strong>createIfNotExists</strong></td>
+<td><strong>CreateIfNotExists</strong></td>
+</tr>
+<tr>
+<td><strong>authorizationKeySetting</strong></td>
+<td><strong>AuthorizationKeySetting</strong></td>
+<td>The name of an app setting that contains authorization key to the RethinkDB server containing the database and table containing the document.</td>
+</tr>
+<tr>
+<td><strong>userSetting</strong></td>
+<td><strong>UserSetting</strong></td>
+<td>The name of an app setting that contains user account to connect as to the RethinkDB server containing the database and table containing the document.</td>
+</tr>
+<tr>
+<td><strong>passwordSetting</strong></td>
+<td><strong>PasswordSetting</strong></td>
+<td>The name of an app setting that contains user account password to connect as to the RethinkDB server containing the database and table containing the document.</td>
+</tr>
+<tr>
+<td><strong>enableSslSetting</strong></td>
+<td><strong>EnableSslSetting</strong></td>
+<td>The name of an app setting that contains value indicating if SSL/TLS encryption should be enabled for connection to the RethinkDB server containing the database and table containing the document. The underlying driver (RethinkDb.Driver) requires a commercial license for SSL/TLS encryption.</td>
+</tr>
+<tr>
+<td><strong>licenseToSetting</strong></td>
+<td><strong>LicenseToSetting</strong></td>
+<td>The name of an app setting that contains &quot;license to&quot; of underlying driver (RethinkDb.Driver) commercial license.</td>
+</tr>
+<tr>
+<td><strong>licenseKeySetting</strong></td>
+<td><strong>LicenseKeySetting</strong></td>
+<td>The name of an app setting that contains &quot;license key&quot; of underlying driver (RethinkDb.Driver) commercial license.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="output---usage">Output - usage</h3>
+<p>By default, when you write to the output parameter (or use <code>IAsyncCollector.AddAsync</code>) in your function, a document is created in your database. This document has an automatically generated identifier. You can specify the document identifier by specifying the id property. When document has identifier, the performed opertion will not be an insert but an upsert.</p>
+</article>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2017 - 2018 Tomasz Pęczek
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
