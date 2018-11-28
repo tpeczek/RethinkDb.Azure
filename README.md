@@ -12,6 +12,10 @@ Currently you can find here:
 - [Dockerfile](https://github.com/tpeczek/RethinkDb.Azure/tree/master/docker) for creating basic RethinkDB Docker image
 - RethinkDB bindings for Azure Functions
 
+## Documentation
+
+The documentation is available [here](https://tpeczek.github.io/RethinkDb.Azure/).
+
 ## Demos
 
 The demos projects are available as part of solution.

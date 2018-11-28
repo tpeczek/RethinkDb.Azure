@@ -10,6 +10,9 @@ namespace Microsoft.Azure.WebJobs
     /// The method parameter type can be one of the following:
     /// <list type="bullet">
     /// <item><description>T</description></item>
+    /// <item><description>out T</description></item>
+    /// <item><description><see cref="ICollector{T}"/></description></item>
+    /// <item><description><see cref="IAsyncCollector{T}"/></description></item>
     /// </list>
     /// </remarks>
     [Binding]
