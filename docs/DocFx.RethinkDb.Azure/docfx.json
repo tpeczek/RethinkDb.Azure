@@ -40,7 +40,7 @@
     "dest": "wwwroot",
     "globalMetadata": {
       "_appTitle": "RethinkDb.Azure",
-      "_appFooter": "Copyright © 2018 - 2019 Tomasz Pęczek",
+      "_appFooter": "Copyright © 2018 - 2020 Tomasz Pęczek",
       "_appLogoPath": "resources/svg/logo.svg",
       "_appFaviconPath": "resources/ico/favicon.ico",
       "_disableBreadcrumb": true,
