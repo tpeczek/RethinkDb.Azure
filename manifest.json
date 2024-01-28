@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/Users/tpecz/GitHub/RethinkDb.Azure/docs/DocFx.RethinkDb.Azure",
+  "source_base_path": "/home/runner/work/RethinkDb.Azure/RethinkDb.Azure/docs/DocFx.RethinkDb.Azure",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Azure.WebJobs.RethinkDbAttribute.html",
-          "hash": "FOt3hHYiYN+7BCJda2WcCw=="
+          "hash": "FnAz8CEV8WmNkRLcsWfHeu60CNbXDepS6abPHLl62M4="
         }
       },
       "is_incremental": false,
@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Azure.WebJobs.RethinkDbTriggerAttribute.html",
-          "hash": "5/A11zkIeswoIARgBh7zWw=="
+          "hash": "YWQk3SqIVXGIRw+nF1qpeFs0A3mMqo4BzgYdqAuWmzw="
         }
       },
       "is_incremental": false,
@@ -33,7 +33,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Azure.WebJobs.html",
-          "hash": "CFKWAnFW3RPLk4C8yRG1rg=="
+          "hash": "t7bV//oQvC5c9oYqAWzhKoRb14tZ1szw628bKDeT4QE="
         }
       },
       "is_incremental": false,
@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChange.html",
-          "hash": "OXAvwk7RGK+sdpPJd88PHg=="
+          "hash": "ExbenwW4LSQaqoj2fTipkynVjXp5bc/2/7Cjma1N0RQ="
         }
       },
       "is_incremental": false,
@@ -57,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/RethinkDb.Azure.WebJobs.Extensions.Model.DocumentChangeType.html",
-          "hash": "/nB0dQkahG6PyIrOFaZ4HQ=="
+          "hash": "XKpfs+5/eQIhcqO3dKvtCTnHt25xGpCESuEPW5kgFZY="
         }
       },
       "is_incremental": false,
@@ -69,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/RethinkDb.Azure.WebJobs.Extensions.Model.html",
-          "hash": "e61yZcwjWk1SsctM6yPWvg=="
+          "hash": "tAo8ak9wiqJ01xZwUQnX6rO1h3xGtuqPNYhlEovXBqI="
         }
       },
       "is_incremental": false,
@@ -81,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/RethinkDb.Azure.WebJobs.Extensions.RethinkDbOptions.html",
-          "hash": "E0HmKTZCTfBN9uGIg00LtQ=="
+          "hash": "RXN523TbRD6JKCij5LEkzhAI/eZjOdds+ud/VS1Hn/A="
         }
       },
       "is_incremental": false,
@@ -93,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/RethinkDb.Azure.WebJobs.Extensions.RethinkDbWebJobsBuilderExtensions.html",
-          "hash": "PO3wuicoNE3WunO5tqb2ww=="
+          "hash": "1wkgHiXYQyO5mURqgRnnNjgb6ry+7vqHSkLP8oB7xvE="
         }
       },
       "is_incremental": false,
@@ -105,7 +105,7 @@
       "output": {
         ".html": {
           "relative_path": "api/RethinkDb.Azure.WebJobs.Extensions.RethinkDbWebJobsStartup.html",
-          "hash": "eHzpSFbyAH+QcULQxhKmhA=="
+          "hash": "+O4zlwvJWYQlXHWvTXtuJr/E4QoIqXowgTr9QP21WQU="
         }
       },
       "is_incremental": false,
@@ -117,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/RethinkDb.Azure.WebJobs.Extensions.html",
-          "hash": "DZSq0t3ZcKmcSTpr9R864w=="
+          "hash": "TGhdK7x5pEA9VcIcgXdg8rjMNOQTkxs2HD5PrhD+eGA="
         }
       },
       "is_incremental": false,
@@ -129,7 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "lVOaFbq/ffs+3jOCAzoUMw=="
+          "hash": "SwAVg2UzPI+QIHiTGKLoVDd+mqgc7Dk32NeY5gGwEJw="
         }
       },
       "is_incremental": false,
@@ -140,11 +140,11 @@
         "InvalidFileLink"
       ],
       "type": "Conceptual",
-      "source_relative_path": "articles/azure-functions-bindings-rethinkdb.md",
+      "source_relative_path": "articles/azure-functions-extension-rethinkdb.md",
       "output": {
         ".html": {
-          "relative_path": "articles/azure-functions-bindings-rethinkdb.html",
-          "hash": "Nk3QCLltZMAXKjZNJ203OQ=="
+          "relative_path": "articles/azure-functions-extension-rethinkdb.html",
+          "hash": "5w/T6FoIsBZDM0av7GJ0m8ZOd0f90lP62eUiLbBI4NM="
         }
       },
       "is_incremental": false,
@@ -156,7 +156,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/azure-rethinkdb-architectures.html",
-          "hash": "8ezSeX90cc+SA937OajG5g=="
+          "hash": "NMrSCYWShZpifUWLODBtfww3cZ+s57kjNM/2bKqyypA="
         }
       },
       "is_incremental": false,
@@ -168,7 +168,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "fqjKnHXB0l2UctNj+cC4dw=="
+          "hash": "MCXdplHTWCSKXMgWoA2yT09CnC0p0lXh7+3hs/D43+o="
         }
       },
       "is_incremental": false,
@@ -216,7 +216,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "8sWYt//yfvWJO4LwRsg/0w=="
+          "hash": "tk3zxw6YZFn2iuP1ksLGpj+x8NA8iKCFmttFWqIzUns="
         }
       },
       "is_incremental": false,
@@ -228,34 +228,47 @@
       "status": {
         "can_incremental": false,
         "details": "Cannot build incrementally because last build info is missing.",
-        "incrementalPhase": "build"
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
       },
       "processors": {
-        "TocDocumentProcessor": {
+        "ConceptualDocumentProcessor": {
           "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build"
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 10,
+          "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build"
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
         },
-        "ConceptualDocumentProcessor": {
+        "TocDocumentProcessor": {
           "can_incremental": false,
-          "incrementalPhase": "build"
-        },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
-          "incrementalPhase": "build"
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
         }
       }
     },
     {
       "status": {
         "can_incremental": false,
-        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
-        "incrementalPhase": "postProcessing"
+        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
       },
       "processors": {}
     }

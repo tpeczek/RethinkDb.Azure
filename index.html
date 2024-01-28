@@ -8,7 +8,7 @@
     <title>RethinkDb.Azure | RethinkDb.Azure </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="RethinkDb.Azure | RethinkDb.Azure ">
-    <meta name="generator" content="docfx 2.40.1.0">
+    <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="resources/ico/favicon.ico">
     <link rel="stylesheet" href="styles/docfx.vendor.css">
@@ -54,19 +54,23 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="rethinkdbazure">RethinkDb.Azure</h1>
 
+<p><a href="http://badge.fury.io/nu/RethinkDb.Azure.WebJobs.Extensions"><img src="https://badge.fury.io/nu/RethinkDb.Azure.WebJobs.Extensions.svg" alt="NuGet version"></a></p>
 <p>Azure extensions for <a href="https://www.rethinkdb.com/">RethinkDB</a>.</p>
-<h2 id="whats-in-here">What&#39;s in here</h2>
-<p>Content available here originates from a lift and shift migration of existing project to Azure. As part of that migration RethinkDB database has been containerized and deployed to Azure Container Instances. This created a need for further integration of RethinkDB with Azure in order to make certain <a href="articles/azure-rethinkdb-architectures.html">architectures</a> possible.</p>
-<p>Currently you can find here:</p>
-<ul>
-<li><a href="https://github.com/tpeczek/RethinkDb.Azure/tree/master/docker">Dockerfile</a> for creating basic RethinkDB Docker image</li>
-<li><a href="articles/azure-functions-bindings-rethinkdb.html">RethinkDB bindings for Azure Functions</a></li>
-</ul>
+<h2 id="rethinkdb-trigger-and-bindings-for-azure-functions">RethinkDB Trigger and Bindings for Azure Functions</h2>
+<p>The RethinkDB extension for Azure Functions supports trigger, input and output bindings.</p>
+<p>The extension NuGet package you need to install depends on both the runtime version and C# execution mode you&#39;re using in your function app.</p>
+<h3 id="functions-2x--in-process-model">Functions 2.x  In-Process Model</h3>
+<p>Install the <a href="https://www.nuget.org/packages/RethinkDb.Azure.WebJobs.Extensions">RethinkDb.Azure.WebJobs.Extensions</a> NuGet package.</p>
+<pre><code>PM&gt;  Install-Package RethinkDb.Azure.WebJobs.Extensions
+</code></pre><h2 id="documentation">Documentation</h2>
+<p>The documentation is available <a href="https://tpeczek.github.io/RethinkDb.Azure/">here</a>.</p>
 <h2 id="demos">Demos</h2>
-<p>The demos projectsares available as part of solution on <a href="https://github.com/tpeczek/RethinkDb.Azure">GitHub</a>.</p>
+<p>The project repository contains the following demos:</p>
+<ul>
+<li><a href="https://github.com/tpeczek/RethinkDb.Azure/tree/main/samples/Demo.RethinkDb.Azure.Functions">In-Process Azure Functions</a></li>
+</ul>
 <h2 id="donating">Donating</h2>
-<p>My blog and open source projects are result of my passion for software development, but they require a fair amount of my personal time. If you got value from any of the content I create, then I would appreciate your support by <a href="https://www.buymeacoffee.com/tpeczek">buying me a coffee</a>.</p>
-<p><a href="https://www.buymeacoffee.com/tpeczek"><img src="https://www.buymeacoffee.com/assets/img/custom_images/black_img.png" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" target="_blank"></a></p>
+<p>My blog and open source projects are result of my passion for software development, but they require a fair amount of my personal time. If you got value from any of the content I create, then I would appreciate your support by <a href="https://github.com/sponsors/tpeczek">sponsoring me</a> (either monthly or one-time).</p>
 </article>
           </div>
         </div>
@@ -79,7 +83,7 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2018 Tomasz Pęczek
+            Copyright © 2018 - 2024 Tomasz Pęczek
             
           </div>
         </div>
