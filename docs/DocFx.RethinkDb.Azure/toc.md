@@ -1,6 +1,6 @@
 ﻿# [Introduction](index.md)
 
-# [RethinkDB bindings for Azure Functions](articles/azure-functions-bindings-rethinkdb.md)
+# [RethinkDB Trigger and Bindings for Azure Functions](articles/azure-functions-extension-rethinkdb.md)
 
 # [Azure RethinkDB Architectures](articles/azure-rethinkdb-architectures.md)
 

@@ -1,22 +1,31 @@
 ﻿# RethinkDb.Azure
+[![NuGet version](https://badge.fury.io/nu/RethinkDb.Azure.WebJobs.Extensions.svg)](http://badge.fury.io/nu/RethinkDb.Azure.WebJobs.Extensions)
 
 Azure extensions for [RethinkDB](https://www.rethinkdb.com/).
 
-## What's in here
+## RethinkDB Trigger and Bindings for Azure Functions
 
-Content available here originates from a lift and shift migration of existing project to Azure. As part of that migration RethinkDB database has been containerized and deployed to Azure Container Instances. This created a need for further integration of RethinkDB with Azure in order to make certain [architectures](articles/azure-rethinkdb-architectures.md) possible.
+The RethinkDB extension for Azure Functions supports trigger, input and output bindings.
 
-Currently you can find here:
+The extension NuGet package you need to install depends on both the runtime version and C# execution mode you're using in your function app.
 
-- [Dockerfile](https://github.com/tpeczek/RethinkDb.Azure/tree/master/docker) for creating basic RethinkDB Docker image
-- [RethinkDB bindings for Azure Functions](articles/azure-functions-bindings-rethinkdb.md)
+### Functions 2.x  In-Process Model
+
+Install the [RethinkDb.Azure.WebJobs.Extensions](https://www.nuget.org/packages/RethinkDb.Azure.WebJobs.Extensions) NuGet package.
+
+```
+PM>  Install-Package RethinkDb.Azure.WebJobs.Extensions
+```
+
+## Documentation
+
+The documentation is available [here](https://tpeczek.github.io/RethinkDb.Azure/).
 
 ## Demos
 
-The demos projectsares available as part of solution on [GitHub](https://github.com/tpeczek/RethinkDb.Azure).
+The project repository contains the following demos:
+- [In-Process Azure Functions](https://github.com/tpeczek/RethinkDb.Azure/tree/main/samples/Demo.RethinkDb.Azure.Functions)
 
 ## Donating
 
-My blog and open source projects are result of my passion for software development, but they require a fair amount of my personal time. If you got value from any of the content I create, then I would appreciate your support by [buying me a coffee](https://www.buymeacoffee.com/tpeczek).
-
-<a href="https://www.buymeacoffee.com/tpeczek"><img src="https://www.buymeacoffee.com/assets/img/custom_images/black_img.png" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;"  target="_blank"></a>
+My blog and open source projects are result of my passion for software development, but they require a fair amount of my personal time. If you got value from any of the content I create, then I would appreciate your support by [sponsoring me](https://github.com/sponsors/tpeczek) (either monthly or one-time).

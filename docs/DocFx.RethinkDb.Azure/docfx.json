@@ -23,7 +23,7 @@
           "api/*.yml",
           "toc.md",
           "index.md",
-          "articles/azure-functions-bindings-rethinkdb.md",
+          "articles/azure-functions-extension-rethinkdb.md",
           "articles/azure-rethinkdb-architectures.md"
         ]
       }

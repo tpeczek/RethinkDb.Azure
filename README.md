@@ -3,14 +3,19 @@
 
 Azure extensions for [RethinkDB](https://www.rethinkdb.com/).
 
-## What's in here
+## RethinkDB Trigger and Bindings for Azure Functions
 
-Content available here originates from a lift and shift migration of existing project to Azure. As part of that migration RethinkDB database has been containerized and deployed to Azure Container Instances. This created a need for further integration of RethinkDB with Azure in order to make certain architectures possible.
+The RethinkDB extension for Azure Functions supports trigger, input and output bindings.
 
-Currently you can find here:
+The extension NuGet package you need to install depends on both the runtime version and C# execution mode you're using in your function app.
 
-- [Dockerfile](https://github.com/tpeczek/RethinkDb.Azure/tree/master/docker) for creating basic RethinkDB Docker image
-- RethinkDB bindings for Azure Functions
+### Functions 2.x  In-Process Model
+
+Install the [RethinkDb.Azure.WebJobs.Extensions](https://www.nuget.org/packages/RethinkDb.Azure.WebJobs.Extensions) NuGet package.
+
+```
+PM>  Install-Package RethinkDb.Azure.WebJobs.Extensions
+```
 
 ## Documentation
 
@@ -18,7 +23,8 @@ The documentation is available [here](https://tpeczek.github.io/RethinkDb.Azure/
 
 ## Demos
 
-The demos projects are available as part of solution.
+The project repository contains the following demos:
+- [In-Process Azure Functions](https://github.com/tpeczek/RethinkDb.Azure/tree/main/samples/Demo.RethinkDb.Azure.Functions)
 
 ## Donating
 
