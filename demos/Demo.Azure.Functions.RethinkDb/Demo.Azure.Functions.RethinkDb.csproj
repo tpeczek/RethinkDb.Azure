@@ -5,7 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.2.0" />
-    <PackageReference Include="RethinkDb.Driver" Version="2.3.23" />
+    <PackageReference Include="RethinkDb.Driver" Version="2.3.150" />
   </ItemGroup>
   <ItemGroup>
     <!-- <ProjectReference Include="..\..\src\RethinkDb.Azure.WebJobs.Extensions\RethinkDb.Azure.WebJobs.Extensions.csproj" /> -->
