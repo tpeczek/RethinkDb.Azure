@@ -9,12 +9,12 @@ The RethinkDB extension for Azure Functions supports trigger, input and output b
 
 The extension NuGet package you need to install depends on both the runtime version and C# execution mode you're using in your function app.
 
-### Functions 2.x  In-Process Model
+### Functions 2.x+  In-Process Model
 
 Install the [RethinkDb.Azure.WebJobs.Extensions](https://www.nuget.org/packages/RethinkDb.Azure.WebJobs.Extensions) NuGet package.
 
 ```
-PM>  Install-Package RethinkDb.Azure.WebJobs.Extensions
+>  dotnet add package RethinkDb.Azure.WebJobs.Extensions
 ```
 
 ## Documentation
