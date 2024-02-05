@@ -1,4 +1,4 @@
-﻿namespace Demo.RethinkDb.Azure.Functions.Model
+﻿namespace Demo.Azure.Functions.RethinkDb.Model
 {
     public class ThreadStats
     {
