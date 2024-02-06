@@ -21,10 +21,6 @@ resource projectContainerInstance 'Microsoft.ContainerInstance/containerGroups@2
           port: 28015
           protocol: 'TCP'
         }
-        { 
-          port: 8080
-          protocol: 'TCP'
-        }
       ]
       dnsNameLabel: projectContainerDnsNameLabel
     }
@@ -33,15 +29,11 @@ resource projectContainerInstance 'Microsoft.ContainerInstance/containerGroups@2
         name: rethinkDbImageName
         properties: {
           image: '${rethinkDbImageName}:${rethinkDbImageTag}'
+          command: ['rethinkdb', '--bind-driver', 'all', '--no-http-admin']
           ports: [
             // Client driver
             { 
               port: 28015
-              protocol: 'TCP'
-            }
-            // Administrative HTTP
-            { 
-              port: 8080
               protocol: 'TCP'
             }
           ]
