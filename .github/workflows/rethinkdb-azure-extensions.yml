@@ -23,6 +23,7 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         deploymentName: rethinkdb-azure-extensions-samples
         template: ./infrastructure/rethinkdb-azure-extensions-samples.bicep
+        parameters: 'rethinkDbUser=${{ secrets.RETHINKDB_USER }} rethinkDbPassword=${{ secrets.RETHINKDB_PASSWORD }}'
     - name: Azure Logout
       run: |
         az logout
