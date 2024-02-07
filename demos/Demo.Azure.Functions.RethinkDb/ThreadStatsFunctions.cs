@@ -20,6 +20,8 @@ namespace Demo.Azure.Functions.RethinkDb
                 databaseName: "Demo",
                 tableName: "ThreadStats",
                 HostnameSetting = "RethinkDbHostname",
+                UserSetting = "RethinkDbUser",
+                PasswordSetting = "RethinkDbPassword",
                 Id = "{Query.id}")] ThreadStats threadStats,
             ILogger log)
         {
@@ -42,6 +44,8 @@ namespace Demo.Azure.Functions.RethinkDb
                 databaseName: "Demo",
                 tableName: "ThreadStats",
                 HostnameSetting = "RethinkDbHostname",
+                UserSetting = "RethinkDbUser",
+                PasswordSetting = "RethinkDbPassword",
                 Id = "{id}")] ThreadStats threadStats,
             ILogger log)
         {
@@ -64,7 +68,9 @@ namespace Demo.Azure.Functions.RethinkDb
                 databaseName: "Demo",
                 tableName: "ThreadStats",
                 CreateIfNotExists = true,
-                HostnameSetting = "RethinkDbHostname")] out dynamic document,
+                HostnameSetting = "RethinkDbHostname",
+                UserSetting = "RethinkDbUser",
+                PasswordSetting = "RethinkDbPassword")] out dynamic document,
             ILogger log)
         {
             Guid id = Guid.NewGuid();
@@ -93,7 +99,9 @@ namespace Demo.Azure.Functions.RethinkDb
                 databaseName: "Demo",
                 tableName: "ThreadStats",
                 CreateIfNotExists = true,
-                HostnameSetting = "RethinkDbHostname")] IAsyncCollector<ThreadStats> threadStatsCollector,
+                HostnameSetting = "RethinkDbHostname",
+                UserSetting = "RethinkDbUser",
+                PasswordSetting = "RethinkDbPassword")] IAsyncCollector<ThreadStats> threadStatsCollector,
             ILogger log)
         {
             Int32.TryParse(request.Query["count"], out int count);
@@ -121,10 +129,13 @@ namespace Demo.Azure.Functions.RethinkDb
         }
 
         [FunctionName("HandleThreadStatsChange")]
-        public static void HandleThreadStatsChange([RethinkDbTrigger(
-            databaseName: "Demo",
-            tableName: "ThreadStats",
-            HostnameSetting = "RethinkDbHostname")]DocumentChange change,
+        public static void HandleThreadStatsChange(
+            [RethinkDbTrigger(
+                databaseName: "Demo",
+                tableName: "ThreadStats",
+                HostnameSetting = "RethinkDbHostname",
+                UserSetting = "RethinkDbUser",
+                PasswordSetting = "RethinkDbPassword")]DocumentChange change,
             ILogger log)
         {
             log.LogInformation("[ThreadStats Change Received] " + change.GetNewValue<ThreadStats>());

@@ -2,6 +2,11 @@ targetScope = 'subscription'
 
 param location string = 'westeurope'
 
+@secure()
+param rethinkDbUser string
+@secure()
+param rethinkDbPassword string
+
 var projectResourceGroupName = 'rg-rethinkdb-azure-extensions-samples' 
 
 resource projectResourceGroup 'Microsoft.Resources/resourceGroups@2022-09-01' = {
@@ -14,5 +19,7 @@ module projectResourceGroupModule 'rethinkdb-azure-extensions-samples-rg.bicep' 
   scope: projectResourceGroup
   params: {
     location: projectResourceGroup.location
+    rethinkDbUser: rethinkDbUser
+    rethinkDbPassword: rethinkDbPassword
   }
 }
