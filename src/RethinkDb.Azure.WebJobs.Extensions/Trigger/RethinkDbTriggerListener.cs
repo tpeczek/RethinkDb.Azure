@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Azure.WebJobs.Host.Scale;
 using Microsoft.Azure.WebJobs.Host.Executors;
 using Microsoft.Azure.WebJobs.Host.Listeners;
 using RethinkDb.Driver.Ast;
 using RethinkDb.Driver.Net;
 using RethinkDb.Azure.WebJobs.Extensions.Model;
+using Microsoft.Extensions.Logging;
 
 namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
 {
-    internal class RethinkDbTriggerListener : IListener
+    internal class RethinkDbTriggerListener : IListener, IScaleMonitorProvider, ITargetScalerProvider
     {
         #region Fields
         private const int LISTENER_NOT_REGISTERED = 0;
@@ -20,6 +22,9 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
         private readonly Task<IConnection> _rethinkDbConnectionTask;
         private readonly Table _rethinkDbTable;
         private readonly bool _includeTypes;
+
+        private readonly IScaleMonitor<RethinkDbTriggerMetrics> _rethinkDbScaleMonitor;
+        private readonly ITargetScaler _rethinkDbTargetScaler;
 
         private int _listenerStatus = LISTENER_NOT_REGISTERED;
         private Task _listenerTask;
@@ -33,6 +38,9 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
             _rethinkDbConnectionTask = rethinkDbConnectionTask;
             _rethinkDbTable = rethinkDbTable;
             _includeTypes = includeTypes;
+
+            _rethinkDbScaleMonitor = new RethinkDbScaleMonitor();
+            _rethinkDbTargetScaler = new RethinkDbTargetScaler();
         }
         #endregion
 
@@ -113,6 +121,16 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
             }
 
             changefeed.Close();
+        }
+
+        public IScaleMonitor GetMonitor()
+        {
+            return _rethinkDbScaleMonitor;
+        }
+
+        public ITargetScaler GetTargetScaler()
+        {
+            return _rethinkDbTargetScaler;
         }
         #endregion
     }
