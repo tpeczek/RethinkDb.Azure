@@ -7,7 +7,6 @@ using Microsoft.Azure.WebJobs.Host.Listeners;
 using RethinkDb.Driver.Ast;
 using RethinkDb.Driver.Net;
 using RethinkDb.Azure.WebJobs.Extensions.Model;
-using Microsoft.Extensions.Logging;
 
 namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
 {
@@ -18,11 +17,13 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
         private const int LISTENER_REGISTERING = 1;
         private const int LISTENER_REGISTERED = 2;
 
+        private readonly string _functionId;
         private readonly ITriggeredFunctionExecutor _executor;
         private readonly Task<IConnection> _rethinkDbConnectionTask;
         private readonly Table _rethinkDbTable;
         private readonly bool _includeTypes;
 
+        private readonly RethinkDbMetricsProvider _rethinkDbMetricsProvider;
         private readonly IScaleMonitor<RethinkDbTriggerMetrics> _rethinkDbScaleMonitor;
         private readonly ITargetScaler _rethinkDbTargetScaler;
 
@@ -32,14 +33,16 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
         #endregion
 
         #region Constructor
-        public RethinkDbTriggerListener(ITriggeredFunctionExecutor executor, Task<IConnection> rethinkDbConnectionTask, Table rethinkDbTable, bool includeTypes)
+        public RethinkDbTriggerListener(string functionId, ITriggeredFunctionExecutor executor, Task<IConnection> rethinkDbConnectionTask, Table rethinkDbTable, bool includeTypes)
         {
+            _functionId = functionId;
             _executor = executor;
             _rethinkDbConnectionTask = rethinkDbConnectionTask;
             _rethinkDbTable = rethinkDbTable;
             _includeTypes = includeTypes;
 
-            _rethinkDbScaleMonitor = new RethinkDbScaleMonitor();
+            _rethinkDbMetricsProvider = new RethinkDbMetricsProvider();
+            _rethinkDbScaleMonitor = new RethinkDbScaleMonitor(_functionId, _rethinkDbMetricsProvider);
             _rethinkDbTargetScaler = new RethinkDbTargetScaler();
         }
         #endregion
@@ -117,6 +120,7 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
 
             while (!listenerStoppingToken.IsCancellationRequested && (await changefeed.MoveNextAsync(listenerStoppingToken)))
             {
+                _rethinkDbMetricsProvider.CurrentBufferedItemsCount = changefeed.BufferedItems.Count;
                 await _executor.TryExecuteAsync(new TriggeredFunctionData() { TriggerValue = changefeed.Current }, CancellationToken.None);
             }
 

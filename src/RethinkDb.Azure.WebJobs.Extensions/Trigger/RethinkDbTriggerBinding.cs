@@ -54,7 +54,7 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
                 throw new ArgumentNullException(nameof(context));
             }
 
-            return Task.FromResult<IListener>(new RethinkDbTriggerListener(context.Executor, _rethinkDbConnectionTask, _rethinkDbTable, _includeTypes));
+            return Task.FromResult<IListener>(new RethinkDbTriggerListener(context.Descriptor.Id, context.Executor, _rethinkDbConnectionTask, _rethinkDbTable, _includeTypes));
 
         }
 

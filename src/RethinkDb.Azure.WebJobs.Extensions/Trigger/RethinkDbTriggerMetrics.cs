@@ -4,5 +4,6 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
 {
     internal class RethinkDbTriggerMetrics : ScaleMetrics
     {
+        public int BufferedItemsCount { get; set; }
     }
 }
