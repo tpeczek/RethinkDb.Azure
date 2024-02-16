@@ -6,11 +6,29 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
 {
     internal class RethinkDbScaleMonitor : IScaleMonitor<RethinkDbTriggerMetrics>
     {
-        public ScaleMonitorDescriptor Descriptor => throw new NotImplementedException();
+        #region Fields
+        private readonly string _functionId;
+        private readonly RethinkDbMetricsProvider _rethinkDbMetricsProvider;
+        #endregion
 
+        #region Properties
+        public ScaleMonitorDescriptor Descriptor { get; }
+        #endregion
+
+        #region Constructor
+        public RethinkDbScaleMonitor(string functionId, RethinkDbMetricsProvider rethinkDbMetricsProvider)
+        {
+            _functionId = functionId;
+            _rethinkDbMetricsProvider = rethinkDbMetricsProvider;
+
+            Descriptor = new ScaleMonitorDescriptor($"{_functionId}-{RethinkDbTriggerParameterDescriptor.TRIGGER_NAME}".ToLower(), _functionId);
+        }
+        #endregion
+
+        #region Methods
         public Task<RethinkDbTriggerMetrics> GetMetricsAsync()
         {
-            throw new NotImplementedException();
+            return Task.FromResult(_rethinkDbMetricsProvider.GetMetrics());
         }
 
         public ScaleStatus GetScaleStatus(ScaleStatusContext<RethinkDbTriggerMetrics> context)
@@ -25,7 +43,8 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
 
         Task<ScaleMetrics> IScaleMonitor.GetMetricsAsync()
         {
-            throw new NotImplementedException();
+            return Task.FromResult((ScaleMetrics)_rethinkDbMetricsProvider.GetMetrics());
         }
+        #endregion
     }
 }
