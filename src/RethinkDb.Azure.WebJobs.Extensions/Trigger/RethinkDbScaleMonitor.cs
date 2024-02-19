@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs.Host.Scale;
+using Microsoft.Extensions.Logging;
 
 namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
 {
@@ -33,17 +35,35 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
 
         public ScaleStatus GetScaleStatus(ScaleStatusContext<RethinkDbTriggerMetrics> context)
         {
-            throw new NotImplementedException();
+            return GetScaleStatus(context.WorkerCount, context.Metrics?.ToArray());
         }
 
         public ScaleStatus GetScaleStatus(ScaleStatusContext context)
         {
-            throw new NotImplementedException();
+            return GetScaleStatus(context.WorkerCount, context.Metrics?.Cast<RethinkDbTriggerMetrics>().ToArray());
         }
 
         Task<ScaleMetrics> IScaleMonitor.GetMetricsAsync()
         {
             return Task.FromResult((ScaleMetrics)_rethinkDbMetricsProvider.GetMetrics());
+        }
+
+        private ScaleStatus GetScaleStatus(int workerCount, RethinkDbTriggerMetrics[] metrics)
+        {
+            ScaleStatus status = new ScaleStatus
+            {
+                Vote = ScaleVote.None
+            };
+
+            // RethinkDB change feed is not meant to be processed in paraller.
+            if (workerCount > 1)
+            {
+                status.Vote = ScaleVote.ScaleIn;
+
+                return status;
+            }
+
+            return status;
         }
         #endregion
     }
