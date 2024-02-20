@@ -43,7 +43,7 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
 
             _rethinkDbMetricsProvider = new RethinkDbMetricsProvider();
             _rethinkDbScaleMonitor = new RethinkDbScaleMonitor(_functionId, _rethinkDbMetricsProvider);
-            _rethinkDbTargetScaler = new RethinkDbTargetScaler();
+            _rethinkDbTargetScaler = new RethinkDbTargetScaler(_functionId);
         }
         #endregion
 
