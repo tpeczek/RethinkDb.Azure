@@ -8,7 +8,7 @@ on:
     - main
   workflow_dispatch:
 jobs:
-  build-and-test-in-process:
+  build-and-test-azurefunctions-in-process:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout

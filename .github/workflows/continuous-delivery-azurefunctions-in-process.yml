@@ -1,0 +1,31 @@
+name: Continuous Delivery (Bindings for Azure Functions 2.x+ In-Process Model)
+on:
+  push:
+    tags:
+    - "azurefunctions-in-process-v[0-9]+.[0-9]+.[0-9]+"
+jobs:
+  build-test-pack-and-push:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Extract VERSION
+      run: echo "VERSION=${GITHUB_REF/refs\/tags\/azurefunctions-in-process-v/}" >> $GITHUB_ENV
+      shell: bash
+    - name: Setup .NET 6.0 SDK
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '6.0.x'
+    - name: Restore
+      run: dotnet restore src/RethinkDb.Azure.WebJobs.Extensions
+    - name: Build
+      run: dotnet build src/RethinkDb.Azure.WebJobs.Extensions --configuration Release --no-restore
+    - name: Test
+      run: dotnet test test/RethinkDb.Azure.WebJobs.Extensions.Tests --configuration Release
+    - name: Pack
+      run: dotnet pack src/RethinkDb.Azure.WebJobs.Extensions --configuration Release --no-build
+    - name: NuGet Push RethinkDb.Azure.WebJobs.Extensions
+      run: dotnet nuget push src/RethinkDb.Azure.WebJobs.Extensions/bin/Release/RethinkDb.Azure.WebJobs.Extensions.${VERSION}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_API_KEY}
+      shell: bash
+      env:
+        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
