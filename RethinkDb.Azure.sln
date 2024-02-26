@@ -24,6 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.Azure.Functions.Worker.RethinkDb", "demos\Demo.Azure.Functions.Worker.RethinkDb\Demo.Azure.Functions.Worker.RethinkDb.csproj", "{A12E65A3-855A-43AF-B1A5-CE5B043675E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,10 @@ Global
 		{A4A41AD6-ED2C-45CD-98E1-ABEB1053B361}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4A41AD6-ED2C-45CD-98E1-ABEB1053B361}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4A41AD6-ED2C-45CD-98E1-ABEB1053B361}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A12E65A3-855A-43AF-B1A5-CE5B043675E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A12E65A3-855A-43AF-B1A5-CE5B043675E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A12E65A3-855A-43AF-B1A5-CE5B043675E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A12E65A3-855A-43AF-B1A5-CE5B043675E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{88724276-2647-4014-8AA8-F7B2C52D6210} = {0BF43B1E-0B30-42C7-A0EE-E9BBAB47AC77}
 		{2F36753C-9878-4323-91DD-25F1772F4224} = {191524B5-D9A7-4F3F-9A9B-A623C86B6A07}
 		{A4A41AD6-ED2C-45CD-98E1-ABEB1053B361} = {9BEBED20-5D0E-48A6-999E-758024BEB7E3}
+		{A12E65A3-855A-43AF-B1A5-CE5B043675E1} = {9BEBED20-5D0E-48A6-999E-758024BEB7E3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F1E6CC11-C8AC-4AD7-9AF7-1045E96D2B12}
