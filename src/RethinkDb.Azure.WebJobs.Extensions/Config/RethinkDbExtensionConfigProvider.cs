@@ -47,7 +47,7 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Config
             // RethinkDB Bindings
             var bindingAttributeBindingRule = context.AddBindingRule<RethinkDbAttribute>();
             bindingAttributeBindingRule.AddValidator(ValidateHost);
-            bindingAttributeBindingRule.BindToCollector<OpenType>(typeof(RethinkDbCollectorConverter<>), _options, _rethinkDBConnectionFactory);
+            bindingAttributeBindingRule.BindToCollector<OpenType.Poco>(typeof(RethinkDbCollectorConverter<>), _options, _rethinkDBConnectionFactory);
             bindingAttributeBindingRule.WhenIsNotNull(nameof(RethinkDbAttribute.Id))
                 .BindToValueProvider(CreateValueBinderAsync);
 

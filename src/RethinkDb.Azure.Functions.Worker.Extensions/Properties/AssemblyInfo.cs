@@ -1,2 +1,2 @@
-﻿[assembly: Microsoft.Azure.Functions.Worker.Extensions.Abstractions.ExtensionInformation("RethinkDb.Azure.WebJobs.Extensions", "0.5.0")]
+﻿[assembly: Microsoft.Azure.Functions.Worker.Extensions.Abstractions.ExtensionInformation("RethinkDb.Azure.WebJobs.Extensions", "0.6.0")]
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("RethinkDb.Azure.Functions.Worker.Extensions")]
