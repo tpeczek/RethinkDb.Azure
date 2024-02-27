@@ -1,8 +1,10 @@
 using System.Net;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
+using RethinkDb.Azure.Functions.Worker.Extensions;
 using Demo.Azure.Functions.Worker.RethinkDb.Model;
 
 namespace Demo.Azure.Functions.Worker.RethinkDb
@@ -14,6 +16,54 @@ namespace Demo.Azure.Functions.Worker.RethinkDb
         public ThreadStatsFunctions(ILogger<ThreadStatsFunctions> logger)
         {
             _logger = logger;
+        }
+
+        [Function("QueryThreadStatsByIdFromQueryString")]
+        public IActionResult QueryThreadStatsByIdFromQueryString(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "QueryThreadStatsById")] HttpRequest request,
+            [RethinkDbInput(
+                databaseName: "Demo",
+                tableName: "ThreadStats",
+                HostnameSetting = "RethinkDbHostname",
+                UserSetting = "RethinkDbUser",
+                PasswordSetting = "RethinkDbPassword",
+                Id = "{Query.id}")] ThreadStats threadStats)
+        {
+            _logger.LogInformation("C# HTTP trigger function processed a request.");
+
+            if (threadStats == null)
+            {
+                _logger.LogInformation($"Thread stats not found (Query['id']: {request.Query["id"]}).");
+                return new NotFoundResult();
+            }
+
+            _logger.LogInformation($"Thread stats found (Query['id']: {request.Query["id"]}).");
+
+            return new OkObjectResult(threadStats);
+        }
+
+        [Function("QueryThreadStatsByIdFromRouteData")]
+        public IActionResult QueryThreadStatsByIdFromRouteData(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "QueryThreadStatsById/{id}")] HttpRequest request,
+            [RethinkDbInput(
+                databaseName: "Demo",
+                tableName: "ThreadStats",
+                HostnameSetting = "RethinkDbHostname",
+                UserSetting = "RethinkDbUser",
+                PasswordSetting = "RethinkDbPassword",
+                Id = "{id}")] ThreadStats threadStats)
+        {
+            _logger.LogInformation("C# HTTP trigger function processed a request.");
+
+            if (threadStats == null)
+            {
+                _logger.LogInformation($"Thread stats not found.");
+                return new NotFoundResult();
+            }
+
+            _logger.LogInformation($"Thread stats found.");
+
+            return new OkObjectResult(threadStats);
         }
 
         [Function("StoreSingleThreadStats")]
@@ -53,7 +103,7 @@ namespace Demo.Azure.Functions.Worker.RethinkDb
             Int32.TryParse(request.Query["count"], out int count);
             Int32.TryParse(request.Query["delay"], out int delay);
 
-            var documents = new List<object>();
+            var documents = new List<ThreadStats>();
 
             for (int i = 0; i < count; i++)
             {
