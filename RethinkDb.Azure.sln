@@ -26,6 +26,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.Azure.Functions.Worker.RethinkDb", "demos\Demo.Azure.Functions.Worker.RethinkDb\Demo.Azure.Functions.Worker.RethinkDb.csproj", "{A12E65A3-855A-43AF-B1A5-CE5B043675E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RethinkDb.Azure.Functions.Worker.Extensions", "src\RethinkDb.Azure.Functions.Worker.Extensions\RethinkDb.Azure.Functions.Worker.Extensions.csproj", "{C6DF4DDA-DE8F-4F5F-B3E6-3EC1791C2871}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{A12E65A3-855A-43AF-B1A5-CE5B043675E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A12E65A3-855A-43AF-B1A5-CE5B043675E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A12E65A3-855A-43AF-B1A5-CE5B043675E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6DF4DDA-DE8F-4F5F-B3E6-3EC1791C2871}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6DF4DDA-DE8F-4F5F-B3E6-3EC1791C2871}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6DF4DDA-DE8F-4F5F-B3E6-3EC1791C2871}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6DF4DDA-DE8F-4F5F-B3E6-3EC1791C2871}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{2F36753C-9878-4323-91DD-25F1772F4224} = {191524B5-D9A7-4F3F-9A9B-A623C86B6A07}
 		{A4A41AD6-ED2C-45CD-98E1-ABEB1053B361} = {9BEBED20-5D0E-48A6-999E-758024BEB7E3}
 		{A12E65A3-855A-43AF-B1A5-CE5B043675E1} = {9BEBED20-5D0E-48A6-999E-758024BEB7E3}
+		{C6DF4DDA-DE8F-4F5F-B3E6-3EC1791C2871} = {6E0B44CF-86F0-4F6C-804C-FE34AC1B0BEF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F1E6CC11-C8AC-4AD7-9AF7-1045E96D2B12}

@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Description>This package contains binding extensions for RethinkDB.</Description>
-    <Copyright>Copyright © 2018 - 2024 Tomasz Pęczek</Copyright>
-    <VersionPrefix>0.5.0</VersionPrefix>
+    <Description>This package contains RethinkDB extensions for .NET isolated functions.</Description>
+    <Copyright>Copyright © 2024 Tomasz Pęczek</Copyright>
+    <VersionPrefix>0.1.0</VersionPrefix>
     <VersionSuffix></VersionSuffix>
     <Authors>Tomasz Pęczek</Authors>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyTitle>RethinkDb.Azure.WebJobs.Extensions</AssemblyTitle>
-    <AssemblyName>RethinkDb.Azure.WebJobs.Extensions</AssemblyName>
-    <PackageId>RethinkDb.Azure.WebJobs.Extensions</PackageId>
-    <PackageTags>Azure WebJobs AzureFunctions RethinkDB</PackageTags>
+    <AssemblyTitle>RethinkDb.Azure.Functions.Worker.Extensions</AssemblyTitle>
+    <AssemblyName>RethinkDb.Azure.Functions.Worker.Extensions</AssemblyName>
+    <PackageId>RethinkDb.Azure.Functions.Worker.Extensions</PackageId>
+    <PackageTags>Azure AzureFunctions IsolatedWorker RethinkDB</PackageTags>
     <PackageProjectUrl>https://github.com/tpeczek/RethinkDb.Azure</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -30,7 +30,6 @@
     <PackageReference Include="DotNet.ReproducibleBuilds" Version="1.1.1" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.WebJobs" Version="[3.0.36,)" />
-    <PackageReference Include="RethinkDb.Driver" Version="[2.3.23,)" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Abstractions" Version="[1.3.0,)" />
   </ItemGroup>
 </Project>
