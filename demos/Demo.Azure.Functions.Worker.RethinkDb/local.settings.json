@@ -1,0 +1,10 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "RethinkDbHostname": "[Enter RethinkDB hostname here]",
+    "RethinkDbUser": "[Enter RethinkDB user name here]",
+    "RethinkDbPassword": "[Enter RethinkDB user password here]"
+  }
+}

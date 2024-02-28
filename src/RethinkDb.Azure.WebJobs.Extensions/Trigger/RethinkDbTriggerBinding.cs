@@ -14,17 +14,18 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
     internal class RethinkDbTriggerBinding : ITriggerBinding
     {
         #region Fields
+        private static readonly Type DOCUMENTCHANGE_TYPE = typeof(DocumentChange);
+        private static readonly IReadOnlyDictionary<string, object> EMPTY_BINDING_DATA = new Dictionary<string, object>();
+
         private readonly ParameterInfo _parameter;
         private readonly Task<IConnection> _rethinkDbConnectionTask;
         private readonly TableOptions _rethinkDbTableOptions;
         private readonly Driver.Ast.Table _rethinkDbTable;
         private readonly bool _includeTypes;
-
-        private readonly Task<ITriggerData> _emptyBindingDataTask = Task.FromResult<ITriggerData>(new TriggerData(null, new Dictionary<string, object>()));
         #endregion
 
         #region Properties
-        public Type TriggerValueType => typeof(DocumentChange);
+        public Type TriggerValueType => DOCUMENTCHANGE_TYPE;
 
         public IReadOnlyDictionary<string, Type> BindingDataContract { get; } = new Dictionary<string, Type>();
         #endregion
@@ -43,8 +44,9 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
         #region Methods
         public Task<ITriggerData> BindAsync(object value, ValueBindingContext context)
         {
-            // ValueProvider is via binding rules. 
-            return _emptyBindingDataTask;
+            IValueProvider valueBinder = new RethinkDbTriggerValueBinder(_parameter, value);
+
+            return Task.FromResult<ITriggerData>(new TriggerData(valueBinder, EMPTY_BINDING_DATA));
         }
 
         public Task<IListener> CreateListenerAsync(ListenerFactoryContext context)

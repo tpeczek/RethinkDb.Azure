@@ -15,6 +15,10 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
     internal class RethinkDbTriggerAttributeBindingProvider : ITriggerBindingProvider
     {
         #region Fields
+        private static readonly Type DOCUMENTCHANGE_TYPE = typeof(DocumentChange);
+        private static readonly Type OBJECT_TYPE = typeof(object);
+        private static readonly Type STRING_TYPE = typeof(string);
+
         private const string UNABLE_TO_RESOLVE_APP_SETTING_FORMAT = "Unable to resolve app setting for property '{0}.{1}'. Make sure the app setting exists and has a valid value.";
 
         private readonly IConfiguration _configuration;
@@ -45,10 +49,13 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
                 throw new ArgumentNullException(nameof(context));
             }
 
-            ParameterInfo parameter = context.Parameter;
-
-            RethinkDbTriggerAttribute triggerAttribute = parameter.GetCustomAttribute<RethinkDbTriggerAttribute>(inherit: false);
+            RethinkDbTriggerAttribute triggerAttribute = context.Parameter.GetCustomAttribute<RethinkDbTriggerAttribute>(inherit: false);
             if (triggerAttribute is null)
+            {
+                return _nullTriggerBindingTask;
+            }
+
+            if ((context.Parameter.ParameterType != DOCUMENTCHANGE_TYPE) && (context.Parameter.ParameterType != OBJECT_TYPE) && (context.Parameter.ParameterType != STRING_TYPE))
             {
                 return _nullTriggerBindingTask;
             }
@@ -58,7 +65,7 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Trigger
 
             TableOptions triggerTableOptions = ResolveTriggerTableOptions(triggerAttribute);
 
-            return Task.FromResult<ITriggerBinding>(new RethinkDbTriggerBinding(parameter, triggerConnectionTask, triggerTableOptions, triggerAttribute.IncludeTypes));
+            return Task.FromResult<ITriggerBinding>(new RethinkDbTriggerBinding(context.Parameter, triggerConnectionTask, triggerTableOptions, triggerAttribute.IncludeTypes));
         }
 
         private ConnectionOptions ResolveTriggerConnectionOptions(RethinkDbTriggerAttribute triggerAttribute)
