@@ -17,6 +17,21 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Config
     [Extension("RethinkDB")]
     internal class RethinkDbExtensionConfigProvider : IExtensionConfigProvider
     {
+        #region Classes
+        private class RethinkDbOpenType : OpenType.Poco
+        {
+            public override bool IsMatch(Type type, OpenTypeMatchContext context)
+            {
+                if (type.FullName == "System.Object")
+                {
+                    return true;
+                }
+
+                return base.IsMatch(type, context);
+            }
+        }
+        #endregion
+
         #region Fields
         private readonly IConfiguration _configuration;
         private readonly RethinkDbOptions _options;
@@ -47,13 +62,13 @@ namespace RethinkDb.Azure.WebJobs.Extensions.Config
             // RethinkDB Bindings
             var bindingAttributeBindingRule = context.AddBindingRule<RethinkDbAttribute>();
             bindingAttributeBindingRule.AddValidator(ValidateHost);
-            bindingAttributeBindingRule.BindToCollector<OpenType.Poco>(typeof(RethinkDbCollectorConverter<>), _options, _rethinkDBConnectionFactory);
+            bindingAttributeBindingRule.BindToCollector<RethinkDbOpenType>(typeof(RethinkDbCollectorConverter<>), _options, _rethinkDBConnectionFactory);
             bindingAttributeBindingRule.WhenIsNotNull(nameof(RethinkDbAttribute.Id))
                 .BindToValueProvider(CreateValueBinderAsync);
 
             // RethinkDB Trigger
             var triggerAttributeBindingRule = context.AddBindingRule<RethinkDbTriggerAttribute>();
-            triggerAttributeBindingRule.BindToTrigger<DocumentChange>(new RethinkDbTriggerAttributeBindingProvider(_configuration, _options, _rethinkDBConnectionFactory, _nameResolver, _loggerFactory));
+            triggerAttributeBindingRule.BindToTrigger(new RethinkDbTriggerAttributeBindingProvider(_configuration, _options, _rethinkDBConnectionFactory, _nameResolver, _loggerFactory));
         }
 
         private void ValidateHost(RethinkDbAttribute attribute, Type paramType)

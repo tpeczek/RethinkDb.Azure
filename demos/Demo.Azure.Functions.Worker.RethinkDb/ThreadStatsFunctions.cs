@@ -5,6 +5,7 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 using RethinkDb.Azure.Functions.Worker.Extensions;
+using RethinkDb.Azure.Functions.Worker.Extensions.Model;
 using Demo.Azure.Functions.Worker.RethinkDb.Model;
 
 namespace Demo.Azure.Functions.Worker.RethinkDb
@@ -127,6 +128,18 @@ namespace Demo.Azure.Functions.Worker.RethinkDb
             {
                 RethinkDbDocuments = documents
             };
+        }
+
+        [Function("HandleThreadStatsChange")]
+        public void HandleThreadStatsChange(
+            [RethinkDbTrigger(
+                databaseName: "Demo",
+                tableName: "ThreadStats",
+                HostnameSetting = "RethinkDbHostname",
+                UserSetting = "RethinkDbUser",
+                PasswordSetting = "RethinkDbPassword")]DocumentChange<ThreadStats> change)
+        {
+            _logger.LogInformation($"[ThreadStats Change Received] {change.NewValue}");
         }
     }
 }

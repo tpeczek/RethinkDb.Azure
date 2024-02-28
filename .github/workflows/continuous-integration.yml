@@ -20,7 +20,7 @@ jobs:
     - name: Restore
       run: dotnet restore src/RethinkDb.Azure.WebJobs.Extensions
     - name: Build
-      run: dotnet build src/RethinkDb.Azure.WebJobs.Extensions --configuration Release --no-restore
+      run:  dotnet build src/RethinkDb.Azure.WebJobs.Extensions --configuration Release --no-restore
     - name: Test
       run: dotnet test test/RethinkDb.Azure.WebJobs.Extensions.Tests --configuration Release
   code-scanning:
