@@ -1,5 +1,6 @@
 # RethinkDb.Azure
-[![NuGet version](https://badge.fury.io/nu/RethinkDb.Azure.WebJobs.Extensions.svg)](http://badge.fury.io/nu/RethinkDb.Azure.WebJobs.Extensions)
+[![NuGet Version](https://img.shields.io/nuget/v/RethinkDb.Azure.WebJobs.Extensions?label=RethinkDb.Azure.WebJobs.Extensions&logo=nuget)](https://www.nuget.org/packages/RethinkDb.Azure.WebJobs.Extensions/)
+[![NuGet Version](https://img.shields.io/nuget/v/RethinkDb.Azure.Functions.Worker.Extensions?label=RethinkDb.Azure.Functions.Worker.Extensions&logo=nuget)](https://www.nuget.org/packages/RethinkDb.Azure.Functions.Worker.Extensions/)
 
 Azure extensions for [RethinkDB](https://www.rethinkdb.com/).
 
@@ -15,6 +16,14 @@ Install the [RethinkDb.Azure.WebJobs.Extensions](https://www.nuget.org/packages/
 
 ```
 >  dotnet add package RethinkDb.Azure.WebJobs.Extensions
+```
+
+### Functions 2.x+  Isolated Worker Model
+
+Install the [RethinkDb.Azure.Functions.Worker.Extensions](https://www.nuget.org/packages/RethinkDb.Azure.Functions.Worker.Extensions) NuGet package.
+
+```
+>  dotnet add package RethinkDb.Azure.Functions.Worker.Extensions
 ```
 
 ## Documentation

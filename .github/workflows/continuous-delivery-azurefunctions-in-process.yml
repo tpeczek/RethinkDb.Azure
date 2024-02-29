@@ -13,7 +13,7 @@ jobs:
       run: echo "VERSION=${GITHUB_REF/refs\/tags\/azurefunctions-in-process-v/}" >> $GITHUB_ENV
       shell: bash
     - name: Setup .NET 6.0 SDK
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '6.0.x'
     - name: Restore

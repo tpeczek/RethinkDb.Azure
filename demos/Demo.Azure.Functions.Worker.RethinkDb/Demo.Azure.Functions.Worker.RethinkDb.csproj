@@ -16,8 +16,8 @@
     <PackageReference Include="Microsoft.Azure.Functions.Worker.ApplicationInsights" Version="1.1.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\RethinkDb.Azure.Functions.Worker.Extensions\RethinkDb.Azure.Functions.Worker.Extensions.csproj" />
-    <!-- <PackageReference Include="RethinkDb.Azure.Functions.Worker.Extensions" Version="0.1.0" /> -->
+    <!-- <ProjectReference Include="..\..\src\RethinkDb.Azure.Functions.Worker.Extensions\RethinkDb.Azure.Functions.Worker.Extensions.csproj" /> -->
+    <PackageReference Include="RethinkDb.Azure.Functions.Worker.Extensions" Version="0.1.0" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
